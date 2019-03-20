@@ -7,7 +7,11 @@
 
 #include <clocale>
 #include <iostream>
+#include <cstdlib>
+#include <time.h>
 #include <fstream>
+#include <chrono>
+
 
 class My_list2 {
 public:

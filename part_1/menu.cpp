@@ -309,7 +309,7 @@ void menu::Bst() {
             case 2:
                 cout<<"podaj sciezke do pliku"<<endl;
                 cin>>path;
-                Bst.create_from_a_file(path)
+                Bst.create_from_a_file(path);
                 break;
             case 3:
 

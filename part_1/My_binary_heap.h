@@ -7,8 +7,12 @@
 
 #include <clocale>
 #include <iostream>
+#include <cstdlib>
+#include <time.h>
 #include <iomanip>
 #include <fstream>
+#include <chrono>
+
 
 class My_binary_heap {
     int size;

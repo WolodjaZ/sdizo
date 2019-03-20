@@ -27,7 +27,11 @@ void My_binary_search_tree::deleteHelper(My_binary_search_tree::Node *element) {
 
 // ustawia usuwanie w deleteHelper od początkowego elementu
 My_binary_search_tree::~My_binary_search_tree() {
+    auto t1 = std::chrono::steady_clock::now();
     this->deleteHelper(this->root);
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 // funckja zwraca element który ma podaną wartość bądz zwraca NULL, jeśli nie znajdzie akiego elementu to sprawdza wpierw
@@ -58,6 +62,7 @@ My_binary_search_tree::Node* My_binary_search_tree::find(int value){
 
 // funckja dodaje element do drzewa
 void My_binary_search_tree::add(int value) {
+    auto t1 = std::chrono::steady_clock::now();
     // na początku tworzymy element o podanej wartości i ustawiamy wszystkie jego wskaźniki na nullptr
     Node* new_element = new My_binary_search_tree::Node;
 
@@ -93,6 +98,9 @@ void My_binary_search_tree::add(int value) {
         parent->right = new_element;
     }
     this->size++;
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
     this->dsw();
 }
 
@@ -135,6 +143,7 @@ My_binary_search_tree::Node* My_binary_search_tree::mini_value(My_binary_search_
 void My_binary_search_tree::remove(int value) {
     My_binary_search_tree::Node* element = this->find(value);
     if(element){
+        auto t1 = std::chrono::steady_clock::now();
         //jeśli element nie ma lewego dziecka to podmieniamy element na jego prawe dziecko
         if(element->left == nullptr){
             this->transplant(element, element->right);
@@ -164,6 +173,10 @@ void My_binary_search_tree::remove(int value) {
         }
         delete element;
         this->size--;
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
+
         this->dsw();
     }
 }
@@ -225,6 +238,7 @@ My_binary_search_tree::Node* My_binary_search_tree::rotate_right(My_binary_searc
 
 // modyfukiujemy drzewi w taki sposób aby wszystkie element znajdowały sie po prawej stronie
 void My_binary_search_tree::dswHelper() {
+    auto t1 = std::chrono::steady_clock::now();
     My_binary_search_tree::Node* element = this->root;
     while(element){
         if(element->left){
@@ -233,11 +247,16 @@ void My_binary_search_tree::dswHelper() {
             element = element->right;
         }
     }
+
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 //rozkłądamy drzewo tak jak powinno być
 void My_binary_search_tree::dsw() {
     this->dswHelper();
+    auto t1 = std::chrono::steady_clock::now();
     int count = this->size;
     My_binary_search_tree::Node* element = this->root;
     int number = (int)pow(2, (int)log2(count+1)) - 1;  //ilość wierzchołków w drzewie w części zapełnionej
@@ -259,6 +278,10 @@ void My_binary_search_tree::dsw() {
         }
 
     }
+
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 // czyści drzewo i potem tworzy drzewo z losowymi obiektami. Użytkownik podaje zakres losowań oraz ich ilość

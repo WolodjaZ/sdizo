@@ -21,7 +21,7 @@ My_array2::~My_array2() {
 // Dodajemy nowy element na początek poprzez tworzenie nowej tablicy o rozmiarze o jeden większym niż tablica i
 // dodajemy do niej w odpowiednie miejsca dane
 void My_array2::push_front(int data) {
-    //QueryPerformanceCounter(&this->Starting);
+    auto t1 = std::chrono::steady_clock::now();
     int *new_head = new int [this->length+1];
     for(int inc = this->length-1; inc > 0; inc--){
         *(new_head+inc) = *(this->head+inc);
@@ -29,8 +29,10 @@ void My_array2::push_front(int data) {
     *(new_head) = data;
     this->head = new_head;
     this->length++;
-    //QueryPerformanceCounter(&this->Ending);
-    //std::cout<< "Execution Timer = " << this->Ending.QuadPart - this->Starting.QuadPart << "ms" << std::endl;
+
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 
 }
 
@@ -38,6 +40,7 @@ void My_array2::push_front(int data) {
 // dodajemy do niej w odpowiednie miejsca dane
 int My_array2::pop_front() {
     if(this->head){
+        auto t1 = std::chrono::steady_clock::now();
         int *new_head = new int [this->length-1];
         for(int inc = 0; this->length-1 > inc; inc++){
             *(new_head+inc) = *(this->head+inc+1);
@@ -48,9 +51,13 @@ int My_array2::pop_front() {
         this->length--;
         int data = *(this->head);
         delete[] new_head;
+
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
         return data;
     }
-    return NULL;
+    return -1;
 
 }
 
@@ -58,6 +65,7 @@ int My_array2::pop_front() {
 // Dodajemy nowy element na koniec poprzez tworzenie nowej tablicy o rozmiarze o jeden większym niż tablica i
 // dodajemy do niej w odpowiednie miejsca dane
 void My_array2::push_tail(int data) {
+    auto t1 = std::chrono::steady_clock::now();
     int *new_head = new int [this->length+1];
     for(int inc = 0; this->length > inc; inc++){
         *(new_head+inc) = *(this->head+inc);
@@ -68,6 +76,10 @@ void My_array2::push_tail(int data) {
     new_head = buf;
     this->length++;
     delete[] new_head;
+
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 
@@ -75,6 +87,7 @@ void My_array2::push_tail(int data) {
 // dodajemy do niej w odpowiednie miejsca dane
 int My_array2::pop_tail() {
     if(this->head){
+        auto t1 = std::chrono::steady_clock::now();
         int *new_head = new int [this->length-1];
         for(int inc = 0; this->length-1 > inc; inc++){
             *(new_head+inc) = *(this->head+inc);
@@ -85,9 +98,13 @@ int My_array2::pop_tail() {
         new_head = buf;
         this->length--;
         delete[] new_head;
+
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
         return data;
     }
-    return NULL;
+    return -1;
 
 }
 
@@ -96,21 +113,30 @@ int My_array2::get(int index) {
     if(this->length > index){
         return *(this->head+index);
     }
-    return NULL;
+    return -1;
 }
 
 
 // funkcja przeszukuje przechodząc przez każdy element i sprawdza czy wartość na danym indeksie zgadza się
-// z podaną wartością i zwraca indeks lub null jeśli nie ma
+// z podaną wartością i zwraca indeks lub nullptr jeśli nie ma
 int My_array2::find(int data) {
+    auto t1 = std::chrono::steady_clock::now();
     for(int inc = 0; this->length > inc; inc++){
         if(*(this->head+inc) == data){
             std::cout<< "Value exist in array"<< std::endl;
+            auto t2 = std::chrono::steady_clock::now();
+            auto result = t2 - t1;
+            std::cout << "Execution time:" << result.count() << std::endl;
+
             return inc;
         }
     }
     std::cout<< "Value don't exist in array" <<std::endl;
-    return NULL;
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
+
+    return -1;
 
 }
 
@@ -119,6 +145,7 @@ int My_array2::find(int data) {
 // podaną liczbę a potem wstawiam pozostałe wartości ze starej tablicy do nowej tablicy. Po czym zamieniamy tablice nazwami
 void My_array2::add(int index, int data) {
     if(index >= 0 && index <= length){
+        auto t1 = std::chrono::steady_clock::now();
         int *new_head = new int [this->length+1];
         int inc = 0;
 
@@ -137,6 +164,11 @@ void My_array2::add(int index, int data) {
         new_head = buf;
         this->length++;
         delete[] new_head;
+
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
+
     }
 
 }
@@ -146,6 +178,7 @@ void My_array2::add(int index, int data) {
 // Po czym zamieniamy tablice nazwami
 void My_array2::remove(int index) {
     if(index >= 0 && index < length){
+        auto t1 = std::chrono::steady_clock::now();
         int *new_head = new int [this->length-1];
         int inc = 0;
 
@@ -164,6 +197,11 @@ void My_array2::remove(int index) {
         new_head = buf;
         this->length--;
         delete[] new_head;
+
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
+
     }
 }
 
@@ -181,7 +219,7 @@ void My_array2::create_random(int size, int minimum, int maximum) {
     this->length = size;
     int* new_head = new int [size];
     int data;
-    srand( time( NULL ) );
+    srand( time( nullptr ) );
     for(int inc = 0; size > inc; inc++){
         data = ((std::rand() % (maximum-minimum+1)) + minimum);
         *(new_head+inc) = data;
@@ -200,7 +238,12 @@ void My_array2::create_from_a_file(std::string name) {
     delete[] buf;
     this->length = 0;
     this->head = new int [this->length];
+    int a = 0;
     while (std::getline(infile, line)){
+        if(a == 0){
+            a++;
+            continue;
+        }
         this->push_tail(std::atof(line.c_str()));
     }
 }

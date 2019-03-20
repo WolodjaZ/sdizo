@@ -15,21 +15,28 @@ My_binary_heap::My_binary_heap(int size) {
 // usuwamy kopiec wpierw usuwająć tablice
 My_binary_heap::~My_binary_heap() {
     delete[] root;
-    this->size = NULL;
-    this->real_size = NULL;
+    this->size = 0;
+    this->real_size = 0;
 }
 
 // przeszukujemy kopiec przechodząć po kolejnych elementach w tablicy dopuki nie znajdzie odpowiedni element i wtedy
 // zwraca index na ten element
 int My_binary_heap::find(int value) {
+    auto t1 = std::chrono::steady_clock::now();
     for(int inc = 0; this->real_size > inc; inc++){
         if(*(this->root+inc) == value){
             std::cout<< "Value exist in binary heap"<< std::endl;
+            auto t2 = std::chrono::steady_clock::now();
+            auto result = t2 - t1;
+            std::cout << "Execution time:" << result.count() << std::endl;
             return inc;
         }
     }
     std::cout<< "Value don't exist in binary heap" <<std::endl;
-    return NULL;
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
+    return -1;
 }
 
 // naprawa kopca w dół. Podajemy index od kótego ma zacząć naprawę spradza czy jego wartość jest większa od wartości
@@ -75,12 +82,16 @@ void My_binary_heap::heap_fix_up(int index) {
 // tworzymy nowy obiekt o podanych wartościach na końcu tablicy. Zwikęszamy rozmiat tablicy i zaczynamy naprawę w góre kopca
 void My_binary_heap::add(int value) {
     if(this->size > this->real_size){
+        auto t1 = std::chrono::steady_clock::now();
         *(this->root+this->real_size) = value;
         this->real_size++;
 
         this->heap_fix_up(this->real_size-1);
 
         std::cout<< "Element added!" << std::endl;
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
     }
     else{
         std::cout<< "Binary heap is full" << std::endl;
@@ -91,14 +102,18 @@ void My_binary_heap::add(int value) {
 // ostatni element. Następnie wracamy do poprzedniego elementu i zaczynamy naprawę kopca w dól.
 void My_binary_heap::remove(int value) {
     int index = this->find(value);
-    if(index+1 != NULL){ //TODO ogarnąć wszędzie co z tymi NULL bo NULL = 0
+    if(index != -1){ //TODO ogarnąć wszędzie co z tymi nullptr bo nullptr = 0
+        auto t1 = std::chrono::steady_clock::now();
         *(this->root+index) = *(this->root+this->real_size-1);
-        *(this->root+this->real_size-1) = NULL;
+        *(this->root+this->real_size-1) = 0;
         this->real_size--;
 
         this->heap_fix_down(index);
 
         std::cout<< "Element removed!" << std::endl;
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
     }
     else{
         std::cout<< "Element don't exist" << std::endl;
@@ -107,6 +122,7 @@ void My_binary_heap::remove(int value) {
 
 
 void My_binary_heap::heap_create() {
+    auto t1 = std::chrono::steady_clock::now();
     for(int inc = (this->real_size-2)/2; inc>=0; --inc)
         this->heap_fix_down(inc);
 }
@@ -118,7 +134,7 @@ void My_binary_heap::create_random(int real_size , int size, int minimum, int ma
     delete [] this->root;
     this->root = new int [size];
     int data;
-    srand( time( NULL ) );
+    srand( time( nullptr ) );
     for(int inc = 0; real_size > inc; inc++){
         data = ((std::rand() % (maximum-minimum+1)) + minimum);
         *(this->root+inc) = data;

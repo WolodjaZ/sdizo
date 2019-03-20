@@ -8,13 +8,13 @@
 // tworzymy początek listy
 My_list2::My_list2(){
     this->length = 0;
-    this->head = NULL;
-    this->tail = NULL;
+    this->head = nullptr;
+    this->tail = nullptr;
 }
 
 // Usuwanie tablicy poprzez przechodzenie ze wskaźnika na inny wskaźnik i usuwanie poprzedniego wskaźnika po czym zostaje usunięty koniec
 My_list2::~My_list2(){
-    while(head->next != NULL){
+    while(head->next != nullptr){
         head = head->next;
         delete head->prev;
     }
@@ -28,16 +28,17 @@ int My_list2::getLength(){
     return this->length;
 }
 
-// ustawiamy nowy element o waryości data oraz ustawiamy wskaźnik na poprzedniego na NULL i następnego na głowę po czym przypisujemy
+// ustawiamy nowy element o waryości data oraz ustawiamy wskaźnik na poprzedniego na nullptr i następnego na głowę po czym przypisujemy
 // głowe do nowej struktury. Spradzamy również czy występował wcześniej element i ustawiamy odpowiednie wskaźniki z tym związane
 void My_list2::push_front(int data){
+    auto t1 = std::chrono::steady_clock::now();
     Node* element = new Node;
 
     element->data = data;
-    element->prev = NULL;
+    element->prev = nullptr;
     element->next = this->head;
 
-    if(this->head == NULL){
+    if(this->head == nullptr){
         this->tail = element;
     }
     else{
@@ -46,34 +47,44 @@ void My_list2::push_front(int data){
 
     this->head = element;
     this->length++;
+
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 // pobieramy pierwszy element do zmiennej po czym ustawiamy głowę na następny element oraz sptawdzamy czy istnieje nastęþny element i ustawiamy
 // wskaźniki odpowiednio po czym usuwamy ten element
 My_list2::Node* My_list2::pop_front() {
-    if(this->head != NULL){
+    if(this->head != nullptr){
+        auto t1 = std::chrono::steady_clock::now();
         Node* element = this->head;
         this->head = this->head->next;
-        if(this->head == NULL){
-            this->tail = NULL;
+        if(this->head == nullptr){
+            this->tail = nullptr;
         } else{
-            this->head->prev = NULL;
+            this->head->prev = nullptr;
         }
         delete element;
         this->length--;
+
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
     }
 }
 
 
 // analogicznie do push front tylko że z wykorzystaniem ogona
 void My_list2::push_tail(int data) {
+    auto t1 = std::chrono::steady_clock::now();
     Node* element = new Node;
 
     element->data = data;
     element->prev = this->tail;
-    element->next = NULL;
+    element->next = nullptr;
 
-    if(this->tail == NULL){
+    if(this->tail == nullptr){
         this->head = element;
     }
     else{
@@ -82,52 +93,75 @@ void My_list2::push_tail(int data) {
 
     this->tail = element;
     this->length++;
+
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 
 // analogicznie do pop front tylko że z wykorzystaniem ogona
 My_list2::Node* My_list2::pop_tail() {
-    if(this->tail != NULL){
+    if(this->tail != nullptr){
+        auto t1 = std::chrono::steady_clock::now();
         Node* element = this->tail;
         this->tail = this->tail->prev;
-        if(this->tail == NULL){
-            this->head = NULL;
+        if(this->tail == nullptr){
+            this->head = nullptr;
         }
         else{
-            this->tail->next = NULL;
+            this->tail->next = nullptr;
         }
         delete element;
         this->length--;
+
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
     }
 }
 
 // funkcja przechodzi od ogona do ostatniego elementu sprawdzająć czy wartość podana jest równa wartosci wskaźnika
-// po znalezieniu zwraca wskaźnik na ten element jeśli nie znajdzie to zwraca NULL
+// po znalezieniu zwraca wskaźnik na ten element jeśli nie znajdzie to zwraca nullptr
 My_list2::Node* My_list2::find_by_value(int data) {
+    auto t1 = std::chrono::steady_clock::now();
     Node* element = this->head;
-    while(element != NULL){
+    while(element != nullptr){
         if(element->data == data){
             std::cout << "Value exist in list" <<std::endl;
+
+            auto t2 = std::chrono::steady_clock::now();
+            auto result = t2 - t1;
+            std::cout << "Execution time:" << result.count() << std::endl;
             return element;
         }
         element = element->next;
     }
     std::cout << "Element don't exit"<< std::endl;
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
+
     return element;
 }
 
 // funkcja przechodzi tyle razy ile indeks podaje i zwraca wartość znajdującą się za tym indeksem
 My_list2::Node* My_list2::find(int index) {
     if(this->length > index){
+        auto t1 = std::chrono::steady_clock::now();
         Node* element = this->head;
         for(int inc = 0; inc != index; inc++){
             element = element->next;
         }
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
+
         return element;
     }
 
     std::cout <<"index out off range!" <<std::endl;
-    return NULL;
+    return nullptr;
 }
 
 // funkcja tworzy strukture o podanych danych i ustawia ją na miejscu podanym w indeksie
@@ -144,6 +178,7 @@ void My_list2::add(int index, int data) {
         }
         else
         {
+            auto t1 = std::chrono::steady_clock::now();
             Node *element = this->head;
             for (int inc = 0; inc != index; inc++) {
                 element = element->next;
@@ -157,6 +192,10 @@ void My_list2::add(int index, int data) {
             element->prev->next = new_element;
             element->prev = new_element;
             this->length++;
+
+            auto t2 = std::chrono::steady_clock::now();
+            auto result = t2 - t1;
+            std::cout << "Execution time:" << result.count() << std::endl;
         }
 
     }
@@ -166,44 +205,54 @@ void My_list2::add(int index, int data) {
 
 }
 
-// Funkcja przelatuje po wskaźnika szukając odpowiedniej wartości bądz kiedy dojdzie do NULL.
+// Funkcja przelatuje po wskaźnika szukając odpowiedniej wartości bądz kiedy dojdzie do nullptr.
 // Jeśli znajdzie tą wartość to wtedy ustawia poprzednika i następnika na siebie i usuwa dany element
 void My_list2::remove_by_value(int data) {
+    auto t1 = std::chrono::steady_clock::now();
     Node* element = this->head;
-    while(element != NULL and element->data != data){
+    while(element != nullptr and element->data != data){
         element = element->next;
     }
-    if(element != NULL){
-        if(element->prev != NULL){
+    if(element != nullptr){
+        if(element->prev != nullptr){
             element->prev->next = element->next;
         }
-        if(element->next != NULL){
+        if(element->next != nullptr){
             element->next->prev = element->prev;
         }
         this->length--;
     }
     delete element;
+
+    auto t2 = std::chrono::steady_clock::now();
+    auto result = t2 - t1;
+    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 // analogicznie działą jka remove_by_value tylko tutaj przelatuje po aż nie znajdzie danego indeksu
 void My_list2::remove(int index) {
     if(this->length > index){
+        auto t1 = std::chrono::steady_clock::now();
         Node* element = this->head;
         int inc = 0;
-        while(element != NULL and index != inc){
+        while(element != nullptr and index != inc){
             element = element->next;
             inc++;
         }
-        if(element != NULL){
-            if(element->prev != NULL){
+        if(element != nullptr){
+            if(element->prev != nullptr){
                 element->prev->next = element->next;
             }
-            if(element->next != NULL){
+            if(element->next != nullptr){
                 element->next->prev = element->prev;
             }
             this->length--;
         }
         delete element;
+
+        auto t2 = std::chrono::steady_clock::now();
+        auto result = t2 - t1;
+        std::cout << "Execution time:" << result.count() << std::endl;
     }
 }
 
@@ -212,14 +261,14 @@ void My_list2::print() {
     Node* element = this->head;
     std::cout << "List have " << this->length << " elements, ";
     std::cout << "normal: ";
-    while(element != NULL){
+    while(element != nullptr){
         std::cout << element->data << ", ";
         element = element->next;
     }
 
     element = this->tail;
     std::cout << std::endl << "reverse: ";
-    while(element != NULL){
+    while(element != nullptr){
         std::cout << element->data << ", ";
         element = element->prev;
     }
@@ -229,17 +278,17 @@ void My_list2::print() {
 
 //creates random values in table
 void My_list2::create_random(int size, int minimum, int maximum) {
-    while(head->next != NULL){
+    while(head->next != nullptr){
         head = head->next;
         delete head->prev;
     }
     delete head;
 
     this->length = 0;
-    this->head = NULL;
-    this->tail = NULL;
+    this->head = nullptr;
+    this->tail = nullptr;
     int data;
-    srand( time( NULL ) );
+    srand( time( nullptr ) );
     for(int inc = 0; size > inc; inc++){
         data = ((std::rand() % (maximum-minimum+1)) + minimum);
         this->push_front(data);
@@ -252,15 +301,15 @@ void My_list2::create_from_a_file(std::string name) {
     std::ifstream infile(name);
     std::string line;
 
-    while(head->next != NULL){
+    while(head->next != nullptr){
         head = head->next;
         delete head->prev;
     }
     delete head;
 
     this->length = 0;
-    this->head = NULL;
-    this->tail = NULL;
+    this->head = nullptr;
+    this->tail = nullptr;
     while (std::getline(infile, line)){
         this->push_tail(std::atof(line.c_str()));
     }

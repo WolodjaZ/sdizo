@@ -8,13 +8,15 @@
 #include <clocale>
 #include <iostream>
 #include <fstream>
-//#include <windows.h>
+#include <cstdlib>
+#include <time.h>
+#include <chrono>
+
 
 
 class My_array2{
     int* head;
     int length;
-    //LARGE_INTEGER Starting, Ending;
 public:
 
     My_array2();
