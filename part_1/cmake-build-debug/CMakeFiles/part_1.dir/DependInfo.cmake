@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vladimir/Desktop/github-file/sdizo_project/part_1/My_list2.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_list2.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_1/My_red_black_tree2.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_red_black_tree2.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_1/main.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/main.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/menu.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/menu.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

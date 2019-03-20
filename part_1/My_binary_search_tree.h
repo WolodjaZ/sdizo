@@ -35,7 +35,7 @@ public:
 
     void create_random(int size, int minimum, int maximum);
 
-    void create_from_a_file(int size ,std::string name);
+    void create_from_a_file(std::string name);
 
 private:
     void printHelp(Node* v, int in);

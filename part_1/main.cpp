@@ -6,7 +6,7 @@
 int main(){
     std::cout << "Hello, World!" << std::endl;
 
-    My_red_black_tree2 *tree = new My_red_black_tree2();
+    /*My_red_black_tree2 *tree = new My_red_black_tree2();
     tree->create_random(15, 10, 30);
     tree->print();
     tree->remove(10);
@@ -17,7 +17,7 @@ int main(){
     tree->print();
     tree->remove(19);
     tree->print();
-    tree->remove(22);
+    tree->remove(22);*/
 
     return 0;
 }

@@ -117,6 +117,12 @@
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_1/main.cpp">
 			<Option target="part_1"/>
 		</Unit>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_1/menu.cpp">
+			<Option target="part_1"/>
+		</Unit>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_1/menu.h">
+			<Option target="part_1"/>
+		</Unit>
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_1/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

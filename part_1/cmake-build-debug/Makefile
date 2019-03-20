@@ -285,6 +285,33 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/part_1.dir/build.make CMakeFiles/part_1.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+menu.o: menu.cpp.o
+
+.PHONY : menu.o
+
+# target to build an object file
+menu.cpp.o:
+	$(MAKE) -f CMakeFiles/part_1.dir/build.make CMakeFiles/part_1.dir/menu.cpp.o
+.PHONY : menu.cpp.o
+
+menu.i: menu.cpp.i
+
+.PHONY : menu.i
+
+# target to preprocess a source file
+menu.cpp.i:
+	$(MAKE) -f CMakeFiles/part_1.dir/build.make CMakeFiles/part_1.dir/menu.cpp.i
+.PHONY : menu.cpp.i
+
+menu.s: menu.cpp.s
+
+.PHONY : menu.s
+
+# target to generate assembly for a file
+menu.cpp.s:
+	$(MAKE) -f CMakeFiles/part_1.dir/build.make CMakeFiles/part_1.dir/menu.cpp.s
+.PHONY : menu.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -312,6 +339,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... menu.o"
+	@echo "... menu.i"
+	@echo "... menu.s"
 .PHONY : help
 
 

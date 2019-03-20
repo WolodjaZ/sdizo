@@ -276,7 +276,7 @@ void My_binary_search_tree::create_random(int size, int minimum, int maximum) {
 }
 
 // tworzy drzewo od nowa z pliku wpierw czyszcząć całe drzewo
-void My_binary_search_tree::create_from_a_file(int size, std::string name) {
+void My_binary_search_tree::create_from_a_file(std::string name) {
     std::ifstream infile(name);
     std::string line;
     this->deleteHelper(this->root);
