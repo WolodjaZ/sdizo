@@ -39,7 +39,7 @@ My_red_black_tree2::Node* My_red_black_tree2::find(int value) {
 }
 
 // funckja zwraca element który ma podaną wartość bądz zwraca NULL, jeśli nie znajdzie akiego elementu to sprawdza wpierw
-// czy wartość danego elementu nie jest większ od podanej wartości i idzie powtarza tą funkcje dla lewego elementu, analogicznie
+// czy wartość danego elementu nie jest większ od podanej wartości i idzie powtarza tą funkcje dla lewego elementu, analogicznie
 // potem sprawdza dla prawego elementu
 My_red_black_tree2::Node* My_red_black_tree2::findHelper(int value, My_red_black_tree2::Node *element) {
     if(element == this->war){
@@ -118,7 +118,7 @@ void My_red_black_tree2::add(int value) {
 
 // sprawdzenie i naprawa naruszenia własności: Każdy liść war jest czarny, jeśli węzeł jest czerwony to jego synowie czarni
 void My_red_black_tree2::addHelper(My_red_black_tree2::Node *element) {
-    // jeśli z parent jest czerwony to wiadomo że będzie miał on rodzica rodzica ponieważ korzeń jest czarny
+    // jeśli z parent jest czerwony to wiadomo że będzie miał on rodzica rodzica ponieważ korzeń jest czarny
     // jeśli ojciez jest czarny to dobrze dodaliśmy element i nic nie trzeba zmieniać
     while(!element->parent->color){
         // sprawadzamy któryn synem jest rodzic nowo dodanego elementu
@@ -214,7 +214,7 @@ void My_red_black_tree2::remove(int value) {
         }
         delete element;
         this->size--;
-        //jesli kolor przesun→ętego liscia był czarny to mogliśmy naruszyć strukture i trzeba ją naprawić
+        //jesli kolor przesun→ętego liscia był czarny to mogliśmy naruszyć strukture i trzeba ją naprawić
         if(y_original_color){
             this->removeHelper(x);
         }
@@ -225,13 +225,13 @@ void My_red_black_tree2::remove(int value) {
 void My_red_black_tree2::removeHelper(My_red_black_tree2::Node *element) {
     while(element != this->root && element->color){
         // pętla się wykonuje aż element wskazuje na czerwony i czarny węzeł i naprawiamy
-        // element wskazuje na korzeń i można już zakończyć
+        // element wskazuje na korzeń i można już zakończyć
         if(element == element->parent->left){
             // ustalenie którym synem jest element
             // brat nie jest równ war bo element jest podwójnie czarny
             My_red_black_tree2::Node* w = element->parent->right;
             if(!w->color){
-                // jeśli brat jest czerwony to trzeba go zamienić na czarnego i wykonać rotacje
+                // jeśli brat jest czerwony to trzeba go zamienić na czarnego i wykonać rotacje
                 w->color = true;
                 element->parent->color = false;
                 this->rotate_left(element->parent);
@@ -244,8 +244,8 @@ void My_red_black_tree2::removeHelper(My_red_black_tree2::Node *element) {
                 w->color = false;
                 element = element->parent;
             }
-            //brat 'w' wezła element jest czarny, lewy syn węzła 'w' jest czerwony, a prawy syn węzła 'w' jest czarny
-            // zamieniamy kolory i rotujemy
+                //brat 'w' wezła element jest czarny, lewy syn węzła 'w' jest czerwony, a prawy syn węzła 'w' jest czarny
+                // zamieniamy kolory i rotujemy
             else if(w->right->color){
                 w->left->color = true;
                 w->color = false;

@@ -7,7 +7,7 @@
 using namespace std;
 menu::menu() {
 
-    int petla=1;
+    int petla=0;
     do {
         int x;
         cout << "POJEKT SDIZO NR1" << endl;
@@ -16,6 +16,7 @@ menu::menu() {
         cout << "3 - Kopiec Binarny" << endl;
         cout << "4 - Drezwo przeszukiwań binarnych" << endl;
         cout << "5 - Drzewo Czerwono-Czarne" << endl;
+        cout << "6 - Koniec"<<endl;
 
         cin >> x;
         switch (x) {
@@ -35,13 +36,16 @@ menu::menu() {
                 Bst();
                 petla=0;
                 break;
+            case 6:
+                petla=1;
+                break;
             default: {
-                cout << "Error";
+                cout << "Error"<<endl;
                 break;
 
             }
         }
-    }while(petla==1);
+    }while(petla==0);
 }
 void menu::Lista() {
     string path;
@@ -56,12 +60,13 @@ void menu::Lista() {
         cout << "4 - Dodaj  liczbe do listy na koncu " << endl;
         cout << "5 - usun ostatni element"<<endl;
         cout << "6 - usun pierwszy element"<<endl;
-        cout << "7 - Wyszukaj element w liscie" << endl;
-        cout << "8 - Wyswietl Liste"<<endl;
-        cout << "9 - dodaj za liczba" << endl;
+        cout << "7 - usun element"<<endl;
+        cout << "8 - Wyszukaj element w liscie" << endl;
+        cout << "9 - Wyswietl Liste"<<endl;
+        cout << "10 - dodaj za liczba" << endl;
         //cout << "10 - Test" << endl;
 
-        cout << "10 - zakoncz program" << endl;
+        cout << "11 - zakoncz program" << endl;
         cin>>x;
         cout<<endl;
         switch (x) {
@@ -100,29 +105,34 @@ void menu::Lista() {
                 cout<<"Ostatni element zostal usuniety pomyslnie"<<endl;
                 break;
             case 6:
-                cout<<"usun pierwszy elemnet"<<endl;
+                cout<<"usun pierwszy element"<<endl;
                 Lista.pop_front();
-                cout<<"Poczatkow element zostal usuniety pomyslnie"<<endl;
+                cout<<"Element zostal usuniety pomyslnie"<<endl;
                 break;
             case 7:
+                cout<<"usun elemnet"<<endl;
+                cin>>element;
+                Lista.remove_by_value(element);
+                cout<<"Element zostal usuniety pomyslnie"<<endl;
+                break;
+            case 8:
                 cout<<"jakiej wartosci szukasz?"<<endl;
                 cin>>element;
                 Lista.find_by_value(element);
                 break;
-            case 8:
+            case 9:
                 Lista.print();
                 break;
-            case 9:
+            case 10:
                 int szukany;
-                cout<<"podaj index w który ma być wpisany elemnet?"<<endl;
+                cout<<"podaj index w który ma być wpisany elemnet?"<<endl;
                 cin>>szukany;
                 cout<<endl<<"jaka liczba ma zostac dodana"<<endl;
                 cin>>element;
                 Lista.add(szukany,element);
 
                 break;
-
-            case 10:
+            case 11:
                 koniec=1;
                 break;
         }
@@ -216,7 +226,7 @@ void menu::Tablica() {
 }
 void menu::BinaryHeap() {
     int size;
-    cout<<"Jak duży ma być max kopiec?"<<endl;
+    cout<<"Jak duży ma być max kopiec?"<<endl;
     cin>>size;
     My_binary_heap BinaryHeap = My_binary_heap(size);
     int koniec=0;
@@ -230,7 +240,8 @@ void menu::BinaryHeap() {
         cout << "4 - Usun liczbe z kopca" << endl;
         cout << "5 - Wyszukaj element w kopcu" << endl;
         cout << "6 - Wyswietl kopiec"<<endl;
-        cout << "7 - zakoncz program" << endl;
+        cout << "7 - Wyświetl dokładniej kopiec"<<endl;
+        cout << "8 - zakoncz program" << endl;
         cin>>x;
         cout<<endl;
         switch (x) {
@@ -271,6 +282,9 @@ void menu::BinaryHeap() {
                 BinaryHeap.print();
                 break;
             case 7:
+                BinaryHeap.print2();
+                break;
+            case 8:
                 koniec=1;
 
         }
@@ -290,7 +304,8 @@ void menu::Bst() {
         cout << "4 - Usun liczbe z kopca" << endl;
         cout << "5 - Wyszukaj element w drzewie" << endl;
         cout << "6 - Wyswietl drzewo"<<endl;
-        cout << "7 - zakoncz program" << endl;
+        cout << "7 - Wyswietl drzewo po zrównoważeniu" << endl;
+        cout << "8 - zakoncz program" << endl;
         cin>>x;
         cout<<endl;
         switch (x) {
@@ -298,11 +313,11 @@ void menu::Bst() {
                 int ilosc;
                 int max;
                 int min;
-                cout << "Ilu elementowa ma być kopiec?" << endl;
+                cout << "Ilu elementowa ma być drzewo BST?" << endl;
                 cin >> ilosc;
-                cout << "Maxymalny element w kopiec?" << endl;
+                cout << "Maxymalny element w drzewo BST?" << endl;
                 cin >> max;
-                cout << "Minimalny element w kopiec?" << endl;
+                cout << "Minimalny element w drzewo BST?" << endl;
                 cin >> min;
                 Bst.create_random(ilosc, min, max);
                 break;
@@ -331,6 +346,9 @@ void menu::Bst() {
                 Bst.print();
                 break;
             case 7:
+                Bst.print_with_dsw();
+                break;
+            case 8:
                 koniec=1;
 
         }

@@ -3,7 +3,7 @@
 //
 #include "My_binary_search_tree.h"
 
-// algorytm dsw psuje jedno założenie drzewa mogą się zdarzyć liczby równe rodzicowi po lewej stronie
+// algorytm dsw psuje jedno założenie drzewa mogą się zdarzyć liczby równe rodzicowi po lewej stronie
 // tworzymy drzewo bst gdzie wszystko ustawiamy na zero
 My_binary_search_tree::My_binary_search_tree() {
     this->size = 0;
@@ -27,15 +27,11 @@ void My_binary_search_tree::deleteHelper(My_binary_search_tree::Node *element) {
 
 // ustawia usuwanie w deleteHelper od początkowego elementu
 My_binary_search_tree::~My_binary_search_tree() {
-    auto t1 = std::chrono::steady_clock::now();
     this->deleteHelper(this->root);
-    auto t2 = std::chrono::steady_clock::now();
-    auto result = t2 - t1;
-    std::cout << "Execution time:" << result.count() << std::endl;
 }
 
 // funckja zwraca element który ma podaną wartość bądz zwraca NULL, jeśli nie znajdzie akiego elementu to sprawdza wpierw
-// czy wartość danego elementu nie jest większ od podanej wartości i idzie powtarza tą funkcje dla lewego elementu, analogicznie
+// czy wartość danego elementu nie jest większ od podanej wartości i idzie powtarza tą funkcje dla lewego elementu, analogicznie
 // potem sprawdza dla prawego elementu
 My_binary_search_tree::Node* My_binary_search_tree::findHelper(int value, My_binary_search_tree::Node *element) {
     if(element == nullptr){
@@ -62,7 +58,6 @@ My_binary_search_tree::Node* My_binary_search_tree::find(int value){
 
 // funckja dodaje element do drzewa
 void My_binary_search_tree::add(int value) {
-    auto t1 = std::chrono::steady_clock::now();
     // na początku tworzymy element o podanej wartości i ustawiamy wszystkie jego wskaźniki na nullptr
     Node* new_element = new My_binary_search_tree::Node;
 
@@ -90,7 +85,7 @@ void My_binary_search_tree::add(int value) {
     if(parent == nullptr){
         this->root = new_element;
     }
-    // teraz ustawiamy którym dzieckiem jest nowy element
+        // teraz ustawiamy którym dzieckiem jest nowy element
     else if (new_element->data < parent->data){
         parent->left = new_element;
     }
@@ -98,10 +93,6 @@ void My_binary_search_tree::add(int value) {
         parent->right = new_element;
     }
     this->size++;
-    auto t2 = std::chrono::steady_clock::now();
-    auto result = t2 - t1;
-    std::cout << "Execution time:" << result.count() << std::endl;
-    this->dsw();
 }
 
 // funkcja kóra wstawia jedno poddrzewo w miejsce drugiego poddrzewa
@@ -111,7 +102,7 @@ void My_binary_search_tree::transplant(My_binary_search_tree::Node *first, My_bi
     if(first->parent == nullptr){
         this->root = second;
     }
-    // zamieniamy dziecko rodzica first elementem second
+        // zamieniamy dziecko rodzica first elementem second
     else if(first == first->parent->left){
         first->parent->left = second;
     }
@@ -148,7 +139,7 @@ void My_binary_search_tree::remove(int value) {
         if(element->left == nullptr){
             this->transplant(element, element->right);
         }
-        // analogicznie gdy element nie ma prawego dziecka
+            // analogicznie gdy element nie ma prawego dziecka
         else if(element->right == nullptr){
             this->transplant(element, element->left);
         }
@@ -173,11 +164,6 @@ void My_binary_search_tree::remove(int value) {
         }
         delete element;
         this->size--;
-        auto t2 = std::chrono::steady_clock::now();
-        auto result = t2 - t1;
-        std::cout << "Execution time:" << result.count() << std::endl;
-
-        this->dsw();
     }
 }
 
@@ -238,7 +224,6 @@ My_binary_search_tree::Node* My_binary_search_tree::rotate_right(My_binary_searc
 
 // modyfukiujemy drzewi w taki sposób aby wszystkie element znajdowały sie po prawej stronie
 void My_binary_search_tree::dswHelper() {
-    auto t1 = std::chrono::steady_clock::now();
     My_binary_search_tree::Node* element = this->root;
     while(element){
         if(element->left){
@@ -248,22 +233,20 @@ void My_binary_search_tree::dswHelper() {
         }
     }
 
-    auto t2 = std::chrono::steady_clock::now();
-    auto result = t2 - t1;
-    std::cout << "Execution time:" << result.count() << std::endl;
+   
 }
 
 //rozkłądamy drzewo tak jak powinno być
 void My_binary_search_tree::dsw() {
     this->dswHelper();
-    auto t1 = std::chrono::steady_clock::now();
+    
     int count = this->size;
     My_binary_search_tree::Node* element = this->root;
     int number = (int)pow(2, (int)log2(count+1)) - 1;  //ilość wierzchołków w drzewie w części zapełnionej
     for(int a = 0; a < count-number; a++){
         //wykonaj n-m rotacji w lewo , startując od początkowego
         //wierzchołka co drugi wierzchołek
-        element =   this->rotate_left(element); // TODO sprawdzić te linijki
+        element =   this->rotate_left(element);
         element = element->right;
     }
 
@@ -273,15 +256,13 @@ void My_binary_search_tree::dsw() {
         for(int a = 0; a < number; a++){
             // wykonaj m rotacji w lewo , startując
             // od początkowego wierzchołka co drugi wierzchołek
-            element = this->rotate_left(element); // TODO sprawdzić te linijki
+            element = this->rotate_left(element);
             element = element->right;
         }
 
     }
 
-    auto t2 = std::chrono::steady_clock::now();
-    auto result = t2 - t1;
-    std::cout << "Execution time:" << result.count() << std::endl;
+   
 }
 
 // czyści drzewo i potem tworzy drzewo z losowymi obiektami. Użytkownik podaje zakres losowań oraz ich ilość
@@ -305,13 +286,24 @@ void My_binary_search_tree::create_from_a_file(std::string name) {
     this->deleteHelper(this->root);
     this->root = nullptr;
     this->size = 0;
+    int a = 0;
     while (std::getline(infile, line)){
+        if(a == 0){
+            a++;
+            continue;
+        }
         this->add(std::atof(line.c_str()));
     }
 }
 
 
 void My_binary_search_tree::print() {
+    this->printHelp(this->root, 0);
+    std::cout << std::endl;
+}
+
+void My_binary_search_tree::print_with_dsw() {
+    this->dsw();
     this->printHelp(this->root, 0);
     std::cout << std::endl;
 }
@@ -329,3 +321,4 @@ void My_binary_search_tree::printHelp(My_binary_search_tree::Node *v, int in) {
     }
     in--;
 }
+

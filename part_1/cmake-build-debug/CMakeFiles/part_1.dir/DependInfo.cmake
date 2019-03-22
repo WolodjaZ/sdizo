@@ -4,13 +4,13 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/user/Documents/GitHub/sdizo/part_1/My_array2.cpp" "C:/Users/user/Documents/GitHub/sdizo/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_array2.cpp.obj"
-  "C:/Users/user/Documents/GitHub/sdizo/part_1/My_binary_heap.cpp" "C:/Users/user/Documents/GitHub/sdizo/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_binary_heap.cpp.obj"
-  "C:/Users/user/Documents/GitHub/sdizo/part_1/My_binary_search_tree.cpp" "C:/Users/user/Documents/GitHub/sdizo/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_binary_search_tree.cpp.obj"
-  "C:/Users/user/Documents/GitHub/sdizo/part_1/My_list2.cpp" "C:/Users/user/Documents/GitHub/sdizo/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_list2.cpp.obj"
-  "C:/Users/user/Documents/GitHub/sdizo/part_1/My_red_black_tree2.cpp" "C:/Users/user/Documents/GitHub/sdizo/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_red_black_tree2.cpp.obj"
-  "C:/Users/user/Documents/GitHub/sdizo/part_1/main.cpp" "C:/Users/user/Documents/GitHub/sdizo/part_1/cmake-build-debug/CMakeFiles/part_1.dir/main.cpp.obj"
-  "C:/Users/user/Documents/GitHub/sdizo/part_1/menu.cpp" "C:/Users/user/Documents/GitHub/sdizo/part_1/cmake-build-debug/CMakeFiles/part_1.dir/menu.cpp.obj"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/My_array2.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_array2.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/My_binary_heap.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_binary_heap.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/My_binary_search_tree.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_binary_search_tree.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/My_list2.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_list2.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/My_red_black_tree2.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/My_red_black_tree2.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/main.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/main.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_1/menu.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles/part_1.dir/menu.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

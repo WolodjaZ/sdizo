@@ -37,6 +37,8 @@ public:
 
     void print();
 
+    void print_with_dsw();
+
     void create_random(int size, int minimum, int maximum);
 
     void create_from_a_file(std::string name);

@@ -29,6 +29,8 @@ public:
 
     void print();
 
+    void print2();
+
 
     void create_random(int real_size ,int size, int minimum, int maximum);
 
@@ -40,6 +42,8 @@ private:
     void heap_fix_up(int index);
 
     void heap_create();
+
+    void print2help(int index, int in);
 };
 
 

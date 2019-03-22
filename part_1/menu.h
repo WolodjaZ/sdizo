@@ -12,6 +12,7 @@
 #include "My_binary_search_tree.h"
 
 class menu {
+public:
     menu();
     ~menu();
     void Tablica();
