@@ -103,6 +103,7 @@ void My_binary_heap::remove(int value) {
         this->real_size--;
 
         this->heap_fix_up(index);
+        this->heap_fix_down(index);
 
         std::cout<< "Element removed!" << std::endl;
         

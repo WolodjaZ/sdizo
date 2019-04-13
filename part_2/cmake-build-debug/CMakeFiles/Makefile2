@@ -59,45 +59,45 @@ RM = /snap/clion/67/bin/cmake/linux/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/vladimir/Desktop/github-file/sdizo_project/part_1
+CMAKE_SOURCE_DIR = /home/vladimir/Desktop/github-file/sdizo_project/part_2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug
+CMAKE_BINARY_DIR = /home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/part_1.dir
+# Target rules for target CMakeFiles/part_2.dir
 
 # All Build rule for target.
-CMakeFiles/part_1.dir/all:
-	$(MAKE) -f CMakeFiles/part_1.dir/build.make CMakeFiles/part_1.dir/depend
-	$(MAKE) -f CMakeFiles/part_1.dir/build.make CMakeFiles/part_1.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target part_1"
-.PHONY : CMakeFiles/part_1.dir/all
+CMakeFiles/part_2.dir/all:
+	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/depend
+	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9 "Built target part_2"
+.PHONY : CMakeFiles/part_2.dir/all
 
 # Include target in all.
-all: CMakeFiles/part_1.dir/all
+all: CMakeFiles/part_2.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/part_1.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles 8
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/part_1.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladimir/Desktop/github-file/sdizo_project/part_1/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/part_1.dir/rule
+CMakeFiles/part_2.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles 9
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/part_2.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/part_2.dir/rule
 
 # Convenience name for target.
-part_1: CMakeFiles/part_1.dir/rule
+part_2: CMakeFiles/part_2.dir/rule
 
-.PHONY : part_1
-
-# clean rule for target.
-CMakeFiles/part_1.dir/clean:
-	$(MAKE) -f CMakeFiles/part_1.dir/build.make CMakeFiles/part_1.dir/clean
-.PHONY : CMakeFiles/part_1.dir/clean
+.PHONY : part_2
 
 # clean rule for target.
-clean: CMakeFiles/part_1.dir/clean
+CMakeFiles/part_2.dir/clean:
+	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/clean
+.PHONY : CMakeFiles/part_2.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/part_2.dir/clean
 
 .PHONY : clean
 

@@ -236,6 +236,7 @@ void My_red_black_tree2::removeHelper(My_red_black_tree2::Node *element) {
                 element->parent->color = false;
                 this->rotate_left(element->parent);
                 w = element->parent->right;
+                continue;
                 // nowt brat elementu będący jednym z synów w jest teraz czarny
             }
             // przypadki jesli brat jest czanry
@@ -243,6 +244,7 @@ void My_red_black_tree2::removeHelper(My_red_black_tree2::Node *element) {
                 // brat oraz jego dzieci są czarne więc zamieniamy kolor brata i idziemy do ojca
                 w->color = false;
                 element = element->parent;
+                continue;
             }
                 //brat 'w' wezła element jest czarny, lewy syn węzła 'w' jest czerwony, a prawy syn węzła 'w' jest czarny
                 // zamieniamy kolory i rotujemy
@@ -268,10 +270,12 @@ void My_red_black_tree2::removeHelper(My_red_black_tree2::Node *element) {
                 element->parent->color = false;
                 this->rotate_right(element->parent);
                 w = element->parent->left;
+                continue;
             }
             if(w->right->color && w->left->color){
                 w->color = false;
                 element = element->parent;
+                continue;
             }
             else if(w->left->color){
                 w->right->color = true;
@@ -279,13 +283,11 @@ void My_red_black_tree2::removeHelper(My_red_black_tree2::Node *element) {
                 this->rotate_left(element->parent);
                 w = element->left;
             }
-            if(w->color && !w->left->color){
-                w->color = element->parent->color;
-                element->parent->color = true;
-                w->left->color = true;
-                this->rotate_right(element->parent);
-                element = this->root;
-            }
+            w->color = element->parent->color;
+            element->parent->color = true;
+            w->left->color = true;
+            this->rotate_right(element->parent);
+            element = this->root;
         }
     }
     element->color = true;

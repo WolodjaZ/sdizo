@@ -68,7 +68,9 @@ fstream
 chrono
 -
 
-/home/vladimir/Desktop/github-file/sdizo_project/part_1/menu.cpp
+/home/vladimir/Desktop/github-file/sdizo_project/part_1/main.cpp
+iostream
+-
 menu.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_1/menu.h
 
