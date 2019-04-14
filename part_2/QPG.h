@@ -6,8 +6,11 @@
 #define PART_2_QPG_H
 
 
-class QPG {
+#include "Edge.h"
 
+class QPG {
+    Edge* Djikstry_algorithm();
+    Edge* Forda_Belmana_algorithm();
 };
 
 

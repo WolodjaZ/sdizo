@@ -22,6 +22,8 @@ public:
 private:
     Node** list_table;
     bool directed;
+    int start;
+    int end;
     int edges;
     int verticles;
 
@@ -30,7 +32,8 @@ public:
     List_graph();
     ~List_graph();
 
-    void readFromFile(std::string path, std::string type);
+    void readFromFile(std::string path, int algorithm);
+    void generator(int vertex, int procent);
 
     Node* getNeighboursList(int vertex);
 
@@ -43,6 +46,7 @@ public:
 private:
     PriorityQueue* create_priority_queue();
     Node** create_list_from_edges(Edge *edge, int size);
+    void create_spanning_tree(Node** list);
 };
 
 

@@ -11,15 +11,25 @@ List_graph::~List_graph() {
     delete[] list_table;
 }
 
-void List_graph::readFromFile(std::string path, std::string type) {
+void List_graph::readFromFile(std::string path, int algorithm) {
     std::fstream file;
     file.open(path, std::ios::in);
 
     if(file.good()){
-        if (type == 'nieskierowany') directed = false;
-        else directed = true;
 
-        file >> this->edges >> this->verticles;
+        if(algorithm == 0){
+            directed = false;
+            file >> this->edges >> this->verticles;
+        } else if(algorithm == 1){
+            directed = true;
+            file >> this->edges >> this->verticles >> this->start;
+        } else if(algorithm == 2){
+            directed = true;
+            file >> this->edges >> this->verticles >> this->start >> this->end;
+        } else{
+            std::cout << "Nieznany algorytm" << std::endl;
+            return;
+        }
 
         Node* node;
         list_table = new Node* [this->verticles];
@@ -40,7 +50,7 @@ void List_graph::readFromFile(std::string path, std::string type) {
             /*node->next_element = list_table[startVertex];
             list_table[startVertex] = node;*/
 
-            if(type == 'nieskierowane'){
+            if(!directed){
                 node = new Node();
                 node->vetrex = startVertex;
                 node->weight = weight;
@@ -82,7 +92,7 @@ PriorityQueue* List_graph::create_priority_queue() {
 }
 
 List_graph::Node** List_graph::create_list_from_edges(Edge *edge, int size) {
-    Node** list = new Node* [this->verticles];
+    this->list_table = new Node* [this->verticles];
     for(int i = 0; i < size; i++){
         Node* node = new Node();
         node->vetrex = edge[i].endVertex;
@@ -111,7 +121,15 @@ List_graph::Node** List_graph::create_list_from_edges(Edge *edge, int size) {
             list_table[endVertrx] = node;*/
         }
     }
-    return list;
+    return list_table;
+}
+
+
+
+void List_graph::generator(int vertex, int procent) {
+    this->list_table = new Node* [vertex];
+    this->verticles = vertex;
+    this->edges = (procent*vertex*(vertex-1))/(200);
 }
 
 void List_graph::Kruskal_algorithm() {
@@ -123,7 +141,15 @@ void List_graph::Kruskal_algorithm() {
     for(int a = 0; a < this->verticles; a++) delete list[a];
     delete[] list;
 
+}
 
+void List_graph::Prims_algorithm() {
+    Edge* edge = MST::prim_algorithm(nullptr, list_table, verticles, edges);
+    List_graph::Node** list = create_list_from_edges(edge, sizeof(edge));
+    delete[] edge;
+    print(list);
+    for(int a = 0; a < this->verticles; a++) delete list[a];
+    delete[] list;
 }
 
 void List_graph::print(Node** list) {

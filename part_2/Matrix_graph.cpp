@@ -14,16 +14,26 @@ Matrix_graph::~Matrix_graph() {
     delete[] table_matrix;
 }
 
-void Matrix_graph::readFromFile(std::string path, std::string type) {
+void Matrix_graph::readFromFile(std::string path, int algorithm) {
     std::fstream file;
     file.open(path, std::ios::in);
 
     if (file.good())
     {
-        if (type == 'nieskierowany') directed = false;
-        else directed = true;
 
-        file >> edges >> vertex;
+        if(algorithm == 0){
+            directed = false;
+            file >> this->edges >> this->vertex;
+        } else if(algorithm == 1){
+            directed = true;
+            file >> this->edges >> this->vertex >> this->start;
+        } else if(algorithm == 2){
+            directed = true;
+            file >> this->edges >> this->vertex >> this->start >> this->end;
+        } else{
+            std::cout << "Nieznany algorytm" << std::endl;
+            return;
+        }
         int i, j;
 
         table_matrix = new int*[vertex];
@@ -41,7 +51,7 @@ void Matrix_graph::readFromFile(std::string path, std::string type) {
         {
             file >> startVertex >> endVertex >> weight;
             table_matrix[startVertex][endVertex] = weight;
-            if (type == "nieskierowany") table_matrix[endVertex][startVertex] = weight;
+            if (!directed) table_matrix[endVertex][startVertex] = weight;
         }
 
         file.close();
@@ -80,6 +90,15 @@ int** Matrix_graph::create_matrix_from_edges(Edge* edge, int size) {
 void Matrix_graph::Kruskal_algorithm() {
     PriorityQueue* priorityQueue = create_priority_queue();
     Edge *edge = MST::kruskal_algorithm(priorityQueue, this->vertex);
+    int** matrix = create_matrix_from_edges(edge, sizeof(edge));
+    delete edge;
+    print(matrix);
+    for(int i = 0; i < vertex; i++) delete matrix[i];
+    delete[] matrix;
+}
+
+void Matrix_graph::Prims_algorithm() {
+    Edge* edge = MST::prim_algorithm(table_matrix, nullptr, vertex, edges);
     int** matrix = create_matrix_from_edges(edge, sizeof(edge));
     delete edge;
     print(matrix);

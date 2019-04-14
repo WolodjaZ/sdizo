@@ -15,6 +15,8 @@ class Matrix_graph {
     int vertex;
     int edges;
     bool directed;
+    int start;
+    int end;
 
     int** table_matrix;
 
@@ -22,7 +24,8 @@ public:
     Matrix_graph();
     ~Matrix_graph();
 
-    void readFromFile(std::string path, std::string type);
+    void readFromFile(std::string path, int algorithm);
+    void generator(int vertex, int procent);
 
     int get(int start_vertex, int end_vertex);
     void print(int** matrix);
@@ -35,6 +38,7 @@ public:
 private:
     PriorityQueue* create_priority_queue();
     int** create_matrix_from_edges(Edge *edge, int size);
+    void create_spanning_tree(int** matrix);
 };
 
 

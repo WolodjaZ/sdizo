@@ -8,15 +8,17 @@
 
 #include "PriorityQueue.h"
 #include "Spanning_Tree.h"
+#include "List_graph.h"
+#include "Matrix_graph.h"
 
 class MST {
 private:
-    MST() {};
+    MST();
 public :
 
     static Edge* kruskal_algorithm(PriorityQueue* priorityQueue, int vetrex);
 
-    static Edge* prim_algorithm(PriorityQueue* priorityQueue);
+    static Edge* prim_algorithm(int** matrix, List_graph::Node** list, int vertex, int edges);
 };
 
 
