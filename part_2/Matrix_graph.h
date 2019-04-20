@@ -8,8 +8,10 @@
 #include <iostream>
 #include <fstream>
 #include <iomanip>
+
 #include "PriorityQueue.h"
 #include "MST.h"
+#include "MS.h"
 
 class Matrix_graph {
     int vertex;
@@ -25,20 +27,21 @@ public:
     ~Matrix_graph();
 
     void readFromFile(std::string path, int algorithm);
-    void generator(int vertex, int procent);
-
+    void generator(int vertex, int density_procent, int type, int max, int min);
     int get(int start_vertex, int end_vertex);
-    void print(int** matrix);
+    void print(int** matrix, int size);
 
 
     void Prims_algorithm();
     void Kruskal_algorithm();
     void Dijikstras_algorithm();
+    void Bellmana_Forda_algorithm();
+    void Ford_Fulkerson_algorithm();
 
 private:
     PriorityQueue* create_priority_queue();
     int** create_matrix_from_edges(Edge *edge, int size);
-    void create_spanning_tree(int** matrix);
+    int random_vertex(bool* in_tree);
 };
 
 

@@ -96,6 +96,12 @@
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h">
 			<Option target="part_2"/>
 		</Unit>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.cpp">
+			<Option target="part_2"/>
+		</Unit>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.h">
+			<Option target="part_2"/>
+		</Unit>
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.cpp">
 			<Option target="part_2"/>
 		</Unit>
@@ -106,6 +112,12 @@
 			<Option target="part_2"/>
 		</Unit>
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h">
+			<Option target="part_2"/>
+		</Unit>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/Node.cpp">
+			<Option target="part_2"/>
+		</Unit>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/Node.h">
 			<Option target="part_2"/>
 		</Unit>
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.cpp">

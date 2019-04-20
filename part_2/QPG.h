@@ -7,10 +7,18 @@
 
 
 #include "Edge.h"
+#include "List_graph.h"
+#include "PriorityQueue.h"
+#include <iostream>
 
 class QPG {
-    Edge* Djikstry_algorithm();
-    Edge* Forda_Belmana_algorithm();
+private:
+    QPG();
+    static const int MAXINT = 2147483647;
+public:
+    static Edge* Djikstry_algorithm(int** matrix, Node** list, int vertex, int start);
+
+    static Edge* Forda_Belmana_algorithm(int** matrix, Node** list, int vertex, int start);
 };
 
 

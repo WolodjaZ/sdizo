@@ -8,17 +8,19 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
+#include <ctime>
+//#include <string>
 
 #include "PriorityQueue.h"
+#include "Node.h"
 #include "MST.h"
+#include "QPG.h"
+#include "MS.h"
+
+
+
 
 class List_graph {
-public:
-    struct Node{
-        Node* next_element;
-        int vetrex;
-        int weight;
-    };
 private:
     Node** list_table;
     bool directed;
@@ -33,20 +35,24 @@ public:
     ~List_graph();
 
     void readFromFile(std::string path, int algorithm);
-    void generator(int vertex, int procent);
+    void generator(int vertex, int density_procent, int type, int max, int min);
 
     Node* getNeighboursList(int vertex);
 
     void Prims_algorithm();
     void Kruskal_algorithm();
     void Dijikstras_algorithm();
+    void Bellmana_Forda_algorithm();
+    void Ford_Fulkerson_algorithm();
 
-    void print(Node** list);
+    void print(Node** list, int size);
 
 private:
     PriorityQueue* create_priority_queue();
     Node** create_list_from_edges(Edge *edge, int size);
-    void create_spanning_tree(Node** list);
+    int random_vertex(bool* in_tree);
+    void add_node(int startVertex, int endVertrx, int weight);
+    bool exist_edge(int start, int end);
 };
 
 

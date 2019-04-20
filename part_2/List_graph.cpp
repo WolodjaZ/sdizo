@@ -5,15 +5,25 @@
 
 #include "List_graph.h"
 
+List_graph::List_graph(): list_table(nullptr), verticles(0), edges(0){}
 
 List_graph::~List_graph() {
-    for(int a = 0; a < this->verticles; a++) delete this->list_table[a];
+    Node* element, *replace;
+    for(int a = 0; a < this->verticles; a++){
+        element = list_table[a];
+        while (element != nullptr){
+            replace = element;
+            //std::cout << replace->weight << replace->vetrex << std::endl;
+            element = element->next_element; // coś tu nie tak
+            delete replace;
+        }
+    }
     delete[] list_table;
 }
 
 void List_graph::readFromFile(std::string path, int algorithm) {
-    std::fstream file;
-    file.open(path, std::ios::in);
+    std::ifstream file;
+    file.open(path);
 
     if(file.good()){
 
@@ -31,39 +41,14 @@ void List_graph::readFromFile(std::string path, int algorithm) {
             return;
         }
 
-        Node* node;
         list_table = new Node* [this->verticles];
 
         int startVertex, endVertrx, weight;
 
         for(int i = 0; i < this->edges; i++){
             file >> startVertex >> endVertrx >> weight;
-            node = new Node();
-            node->vetrex = endVertrx;
-            node->weight = weight;
-            node->next_element = nullptr;
-            Node *wierzcholek = list_table[startVertex];
-            while (wierzcholek->next_element != nullptr){
-                wierzcholek = wierzcholek->next_element;
-            }
-            wierzcholek->next_element = node;
-            /*node->next_element = list_table[startVertex];
-            list_table[startVertex] = node;*/
-
-            if(!directed){
-                node = new Node();
-                node->vetrex = startVertex;
-                node->weight = weight;
-                node->next_element = nullptr;
-                Node* wierzcholek = list_table[endVertrx];
-                while (wierzcholek->next_element != nullptr){
-                    wierzcholek = wierzcholek->next_element;
-                }
-                wierzcholek->next_element = node;
-
-                /*node->next_element = list_table[endVertrx];
-                list_table[endVertrx] = node;*/
-            }
+            add_node(startVertex, endVertrx, weight);
+            if(!directed) add_node(endVertrx, startVertex, weight);
         }
 
         file.close();
@@ -71,103 +56,215 @@ void List_graph::readFromFile(std::string path, int algorithm) {
     else std::cout << "Error opening file!!!" << std::endl;
 }
 
-List_graph::Node* List_graph::getNeighboursList(int vertex) {
+Node* List_graph::getNeighboursList(int vertex) {
+    if(verticles == 0) return nullptr;
     return list_table[vertex];
 }
 
 PriorityQueue* List_graph::create_priority_queue() {
     if(verticles <= 0) return nullptr;
-    PriorityQueue priorityQueue(edges);
+    PriorityQueue *priorityQueue = new PriorityQueue(edges);
+
     Node* element;
     for(int i = 0; i < verticles; i++){
         element = list_table[i];
-        if (element == nullptr) continue;
-        while(element->next_element != nullptr){
-            priorityQueue.push(Edge(i,element->vetrex, element->weight));
+        while(element != nullptr){
+            if(element->vetrex > i) priorityQueue->push(Edge(i,element->vetrex, element->weight));
+
             element = element->next_element;
         }
-        priorityQueue.push(Edge(i,element->vetrex, element->weight));
     }
-    return &priorityQueue;
+    return priorityQueue;
 }
 
-List_graph::Node** List_graph::create_list_from_edges(Edge *edge, int size) {
-    this->list_table = new Node* [this->verticles];
-    for(int i = 0; i < size; i++){
-        Node* node = new Node();
-        node->vetrex = edge[i].endVertex;
-        node->weight = edge[i].weight;
-        node->next_element = nullptr;
-        Node *wierzcholek = list_table[edge[i].startVertex];
-        while (wierzcholek->next_element != nullptr){
-            wierzcholek = wierzcholek->next_element;
-        }
-        wierzcholek->next_element = node;
-        /*node->next_element = list_table[startVertex];
-        list_table[startVertex] = node;*/
+Node** List_graph::create_list_from_edges(Edge *edge, int size) {
+    Node** list = new Node* [verticles];
+    for(int a = 0; a < size; a++) list[a] = nullptr;
+
+    for(int i = 0; i < size-1; i++){
+        Node* node = new Node(list[edge[i].startVertex],edge[i].endVertex, edge[i].weight);
+        list[edge[i].startVertex] = node;
 
         if(!directed){
-            node = new Node();
-            node->vetrex = edge[i].startVertex;
-            node->weight = edge[i].weight;
-            node->next_element = nullptr;
-            Node* wierzcholek = list_table[edge[i].endVertex];
-            while (wierzcholek->next_element != nullptr){
-                wierzcholek = wierzcholek->next_element;
-            }
-            wierzcholek->next_element = node;
+            node = new Node(list[edge[i].endVertex] ,edge[i].startVertex, edge[i].weight);
+            list[edge[i].endVertex] = node;
 
-            /*node->next_element = list_table[endVertrx];
-            list_table[endVertrx] = node;*/
         }
     }
-    return list_table;
+
+    return list;
 }
 
 
-
-void List_graph::generator(int vertex, int procent) {
+void List_graph::generator(int vertex, int density_procent, int type, int max, int min) {
     this->list_table = new Node* [vertex];
     this->verticles = vertex;
-    this->edges = (procent*vertex*(vertex-1))/(200);
+    this->edges = (density_procent*vertex*(vertex-1))/(200);
+    this->directed = type == 0? false:true;
+
+    bool* in_tree = new bool[vertex];
+
+
+    for(int a = 0; a < verticles; a++) {
+        list_table[a] = nullptr;
+        in_tree[a] = false;
+    }
+
+    srand(time(NULL));
+
+    int first = 0;
+    in_tree[first] = true;
+    int second;
+    int edge;
+    int a = 0;
+    while(a < verticles-1){
+        second = random_vertex(in_tree);
+        edge = (std::rand()%max)+min;
+        srand(time(NULL));
+        add_node(first, second, edge);
+        srand(time(NULL));
+        if(!directed) add_node(second, first, edge);
+        a++;
+        first = second;
+        in_tree[first] = true;
+    }
+
+    edge = (std::rand()%max)+min;
+    add_node(first, 0, edge);
+    if(!directed) add_node(0, first, edge);
+    a++;
+
+    while(a < edges){
+        first = std::rand()%verticles;
+        second = std::rand()%verticles;
+        srand(time(NULL));
+        edge = (std::rand()%max)+min;
+        srand(time(NULL));
+        if(first != second && !exist_edge(first,second)){
+            add_node(first, second, edge);
+            if(!directed) add_node(second, first, edge);
+            a++;
+        }
+    }
+
+    start = std::rand()%verticles;
+    do{
+        end = std::rand()%verticles;
+    }while(end != start);
+
+}
+
+bool List_graph::exist_edge(int start, int end) {
+    Node* element = list_table[start];
+    while(element != nullptr){
+        if(element->vetrex == end) return true;
+        element = element->next_element;
+    }
+    return false;
+}
+
+void List_graph::add_node(int startVertex, int endVertrx, int weight) {
+    Node* node = new Node(list_table[startVertex], endVertrx, weight);
+    list_table[startVertex] = node;
+    /*node->next_element = list_table[startVertex];
+    list_table[startVertex] = node;*/
+}
+
+int List_graph::random_vertex(bool *in_tree) {
+    int ansver;
+    do{
+        ansver = (std::rand() % this->verticles-1)+1;
+    }while(in_tree[ansver]);
+    return ansver;
 }
 
 void List_graph::Kruskal_algorithm() {
+    if(verticles == 0)return;
     PriorityQueue* priorityQueue = create_priority_queue();
     Edge* edge = MST::kruskal_algorithm(priorityQueue, verticles);
-    List_graph::Node** list = create_list_from_edges(edge, sizeof(edge));
+    Node** list = create_list_from_edges(edge, verticles);
     delete[] edge;
-    print(list);
+    print(list, verticles);
     for(int a = 0; a < this->verticles; a++) delete list[a];
     delete[] list;
 
 }
 
 void List_graph::Prims_algorithm() {
+    if(verticles == 0)return;
     Edge* edge = MST::prim_algorithm(nullptr, list_table, verticles, edges);
-    List_graph::Node** list = create_list_from_edges(edge, sizeof(edge));
+    Node** list = create_list_from_edges(edge, verticles);
     delete[] edge;
-    print(list);
+    print(list, verticles);
     for(int a = 0; a < this->verticles; a++) delete list[a];
     delete[] list;
 }
 
-void List_graph::print(Node** list) {
+void List_graph::Dijikstras_algorithm() {
+    std::cout << start << std::endl;
+    Edge* vertexs = QPG::Djikstry_algorithm(nullptr, list_table,verticles, start);
+    if (vertexs == nullptr) return;
+    for(int a = 0; a < verticles; a++){
+        Edge edge = vertexs[a];
+        std::cout << "Vertex:" << a << " cost: " << edge.weight <<" road: " << edge.endVertex;
+        while(edge.startVertex != -1){
+            std::cout << " " << edge.startVertex;
+            edge = vertexs[edge.startVertex];
+        }
+        std::cout << std::endl;
+    }
+
+    delete[] vertexs;
+}
+
+void List_graph::Bellmana_Forda_algorithm() {
+    if(verticles == 0)return;
+    std::cout << start << std::endl;
+    Edge* vertexs = QPG::Forda_Belmana_algorithm(nullptr, list_table,verticles, start);
+    if (vertexs == nullptr) return;
+    for(int a = 0; a < verticles; a++){
+        Edge edge = vertexs[a];
+        std::cout << "Vertex:" << a << " cost: " << edge.weight <<" road: " << edge.endVertex;
+        while(edge.startVertex != -1){
+            std::cout << " " << edge.startVertex;
+            edge = vertexs[edge.startVertex];
+        }
+        std::cout << std::endl;
+    }
+}
+
+void List_graph::Ford_Fulkerson_algorithm() {
+    if(verticles == 0)return;
+    std::cout << start << " " << end << std::endl;
+    MS max_flow(nullptr, list_table, start, end, verticles);
+    int flow = max_flow.Ford_Fulkerson_algorithm();
+    std::cout << "Maksymalny przepływ pomiędzy " << start << "-" << end << " wynosi:" << flow << std::endl;
+}
+
+void List_graph::print(Node** list, int size) {
+    if(list == nullptr) {
+        list = list_table;
+        size = verticles;
+    }
     Node* node;
 
     std::cout << "\nList representation:" << std::endl;
     std::cout << std::endl;
+    int sum = 0;
 
-    for (int i = 0; i < this->verticles; i++)
+    for (int i = 0; i < size; i++)
     {
         std::cout << "[" << i << "] =";
         node = list[i];
 
         while (node)
         {
-            std::cout << std::setw(3) << node->vetrex;
+            std::cout << std::setw(3) << node->vetrex << std::setw(2) << node->weight << ", ";
+            sum += node->weight;
             node = node->next_element;
         }
         std::cout << std::endl;
     }
+
+    std::cout << "Sumaryczna waga: " << sum << std::endl;
 }

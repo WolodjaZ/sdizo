@@ -15,14 +15,28 @@ iostream
 -
 iomanip
 -
+ctime
+-
 PriorityQueue.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
+Node.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Node.h
 MST.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.h
+QPG.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.h
+MS.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.h
 
-/home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.cpp
-MST.h
-/home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.h
+iostream
+-
+cstring
+-
+List_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
+Matrix_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h
 
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.h
 PriorityQueue.h
@@ -45,6 +59,10 @@ PriorityQueue.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
 MST.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.h
+MS.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.h
+
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Node.h
 
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
 Edge.h
@@ -54,9 +72,27 @@ iostream
 chrono
 -
 
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.h
+Edge.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
+List_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
+PriorityQueue.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
+iostream
+-
+
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.h
 Edge.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
 List_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
+
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/main.cpp
+iostream
+-
+List_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
+Matrix_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h
 

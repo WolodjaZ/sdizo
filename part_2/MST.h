@@ -18,7 +18,7 @@ public :
 
     static Edge* kruskal_algorithm(PriorityQueue* priorityQueue, int vetrex);
 
-    static Edge* prim_algorithm(int** matrix, List_graph::Node** list, int vertex, int edges);
+    static Edge* prim_algorithm(int** matrix, Node** list, int vertex, int edges);
 };
 
 

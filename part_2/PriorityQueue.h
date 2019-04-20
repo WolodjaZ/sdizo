@@ -22,13 +22,17 @@ public:
     Edge first();
     void push(Edge edge);
     void pop();
+    bool is_Empty();
+
+    void change_neighbours(int vertex, int value, int change_vertex);
 
     void print();
+
 
 private:
     void queue_fix_up(int index);
     void queue_fix_down(int index);
-    void print_helper(int index);
+    void print_helper(int index, int c);
 };
 
 

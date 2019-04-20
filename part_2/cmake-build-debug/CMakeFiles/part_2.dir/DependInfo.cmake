@@ -6,8 +6,10 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/Edge.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/List_graph.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/MS.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/MST.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/Matrix_graph.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_2/Node.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/Node.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/PriorityQueue.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/QPG.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/Spanning_Tree.cpp.o"

@@ -15,7 +15,6 @@ private:
         int up,rank;
     };
     St *vetrexs;
-    int size;
 public:
     Spanning_Tree(int vetrex);
     ~Spanning_Tree();
