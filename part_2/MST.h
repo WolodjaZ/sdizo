@@ -7,7 +7,7 @@
 
 
 #include "PriorityQueue.h"
-#include "Spanning_Tree.h"
+#include "DisjointSets.h"
 #include "List_graph.h"
 #include "Matrix_graph.h"
 

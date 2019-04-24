@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/68/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/69/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/68/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/69/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -109,18 +109,18 @@ CMakeFiles/part_2.dir/Matrix_graph.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/part_2.dir/Matrix_graph.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.cpp -o CMakeFiles/part_2.dir/Matrix_graph.cpp.s
 
-CMakeFiles/part_2.dir/Spanning_Tree.cpp.o: CMakeFiles/part_2.dir/flags.make
-CMakeFiles/part_2.dir/Spanning_Tree.cpp.o: ../Spanning_Tree.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/part_2.dir/Spanning_Tree.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/part_2.dir/Spanning_Tree.cpp.o -c /home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.cpp
+CMakeFiles/part_2.dir/DisjointSets.cpp.o: CMakeFiles/part_2.dir/flags.make
+CMakeFiles/part_2.dir/DisjointSets.cpp.o: ../DisjointSets.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/part_2.dir/DisjointSets.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/part_2.dir/DisjointSets.cpp.o -c /home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.cpp
 
-CMakeFiles/part_2.dir/Spanning_Tree.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/part_2.dir/Spanning_Tree.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.cpp > CMakeFiles/part_2.dir/Spanning_Tree.cpp.i
+CMakeFiles/part_2.dir/DisjointSets.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/part_2.dir/DisjointSets.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.cpp > CMakeFiles/part_2.dir/DisjointSets.cpp.i
 
-CMakeFiles/part_2.dir/Spanning_Tree.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/part_2.dir/Spanning_Tree.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.cpp -o CMakeFiles/part_2.dir/Spanning_Tree.cpp.s
+CMakeFiles/part_2.dir/DisjointSets.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/part_2.dir/DisjointSets.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.cpp -o CMakeFiles/part_2.dir/DisjointSets.cpp.s
 
 CMakeFiles/part_2.dir/PriorityQueue.cpp.o: CMakeFiles/part_2.dir/flags.make
 CMakeFiles/part_2.dir/PriorityQueue.cpp.o: ../PriorityQueue.cpp
@@ -193,7 +193,7 @@ part_2_OBJECTS = \
 "CMakeFiles/part_2.dir/Edge.cpp.o" \
 "CMakeFiles/part_2.dir/List_graph.cpp.o" \
 "CMakeFiles/part_2.dir/Matrix_graph.cpp.o" \
-"CMakeFiles/part_2.dir/Spanning_Tree.cpp.o" \
+"CMakeFiles/part_2.dir/DisjointSets.cpp.o" \
 "CMakeFiles/part_2.dir/PriorityQueue.cpp.o" \
 "CMakeFiles/part_2.dir/MST.cpp.o" \
 "CMakeFiles/part_2.dir/QPG.cpp.o" \
@@ -207,7 +207,7 @@ part_2: CMakeFiles/part_2.dir/main.cpp.o
 part_2: CMakeFiles/part_2.dir/Edge.cpp.o
 part_2: CMakeFiles/part_2.dir/List_graph.cpp.o
 part_2: CMakeFiles/part_2.dir/Matrix_graph.cpp.o
-part_2: CMakeFiles/part_2.dir/Spanning_Tree.cpp.o
+part_2: CMakeFiles/part_2.dir/DisjointSets.cpp.o
 part_2: CMakeFiles/part_2.dir/PriorityQueue.cpp.o
 part_2: CMakeFiles/part_2.dir/MST.cpp.o
 part_2: CMakeFiles/part_2.dir/QPG.cpp.o

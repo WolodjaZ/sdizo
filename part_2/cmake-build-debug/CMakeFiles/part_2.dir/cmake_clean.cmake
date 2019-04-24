@@ -3,7 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/part_2.dir/Edge.cpp.o"
   "CMakeFiles/part_2.dir/List_graph.cpp.o"
   "CMakeFiles/part_2.dir/Matrix_graph.cpp.o"
-  "CMakeFiles/part_2.dir/Spanning_Tree.cpp.o"
+  "CMakeFiles/part_2.dir/DisjointSets.cpp.o"
   "CMakeFiles/part_2.dir/PriorityQueue.cpp.o"
   "CMakeFiles/part_2.dir/MST.cpp.o"
   "CMakeFiles/part_2.dir/QPG.cpp.o"

@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /snap/clion/68/bin/cmake/linux/bin/cmake
+CMAKE_COMMAND = /snap/clion/69/bin/cmake/linux/bin/cmake
 
 # The command to remove a file.
-RM = /snap/clion/68/bin/cmake/linux/bin/cmake -E remove -f
+RM = /snap/clion/69/bin/cmake/linux/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/snap/clion/68/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/snap/clion/69/bin/cmake/linux/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/snap/clion/68/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	/snap/clion/69/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -122,6 +122,33 @@ part_2: cmake_check_build_system
 part_2/fast:
 	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/build
 .PHONY : part_2/fast
+
+DisjointSets.o: DisjointSets.cpp.o
+
+.PHONY : DisjointSets.o
+
+# target to build an object file
+DisjointSets.cpp.o:
+	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/DisjointSets.cpp.o
+.PHONY : DisjointSets.cpp.o
+
+DisjointSets.i: DisjointSets.cpp.i
+
+.PHONY : DisjointSets.i
+
+# target to preprocess a source file
+DisjointSets.cpp.i:
+	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/DisjointSets.cpp.i
+.PHONY : DisjointSets.cpp.i
+
+DisjointSets.s: DisjointSets.cpp.s
+
+.PHONY : DisjointSets.s
+
+# target to generate assembly for a file
+DisjointSets.cpp.s:
+	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/DisjointSets.cpp.s
+.PHONY : DisjointSets.cpp.s
 
 Edge.o: Edge.cpp.o
 
@@ -339,33 +366,6 @@ QPG.cpp.s:
 	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/QPG.cpp.s
 .PHONY : QPG.cpp.s
 
-Spanning_Tree.o: Spanning_Tree.cpp.o
-
-.PHONY : Spanning_Tree.o
-
-# target to build an object file
-Spanning_Tree.cpp.o:
-	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/Spanning_Tree.cpp.o
-.PHONY : Spanning_Tree.cpp.o
-
-Spanning_Tree.i: Spanning_Tree.cpp.i
-
-.PHONY : Spanning_Tree.i
-
-# target to preprocess a source file
-Spanning_Tree.cpp.i:
-	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/Spanning_Tree.cpp.i
-.PHONY : Spanning_Tree.cpp.i
-
-Spanning_Tree.s: Spanning_Tree.cpp.s
-
-.PHONY : Spanning_Tree.s
-
-# target to generate assembly for a file
-Spanning_Tree.cpp.s:
-	$(MAKE) -f CMakeFiles/part_2.dir/build.make CMakeFiles/part_2.dir/Spanning_Tree.cpp.s
-.PHONY : Spanning_Tree.cpp.s
-
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -402,6 +402,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... part_2"
 	@echo "... edit_cache"
+	@echo "... DisjointSets.o"
+	@echo "... DisjointSets.i"
+	@echo "... DisjointSets.s"
 	@echo "... Edge.o"
 	@echo "... Edge.i"
 	@echo "... Edge.s"
@@ -426,9 +429,6 @@ help:
 	@echo "... QPG.o"
 	@echo "... QPG.i"
 	@echo "... QPG.s"
-	@echo "... Spanning_Tree.o"
-	@echo "... Spanning_Tree.i"
-	@echo "... Spanning_Tree.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

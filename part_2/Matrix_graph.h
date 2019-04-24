@@ -13,6 +13,9 @@
 #include "MST.h"
 #include "MS.h"
 
+
+// Metody create.. , random, oraz wszystkie algorytmy mają tą samą budowe tak jak w liscię
+// sąsiadów i tam znajdują się komentarze objaśniające funckjonowanie metod
 class Matrix_graph {
     int vertex;
     int edges;
@@ -32,11 +35,11 @@ public:
     void print(int** matrix, int size);
 
 
-    void Prims_algorithm();
-    void Kruskal_algorithm();
-    void Dijikstras_algorithm();
-    void Bellmana_Forda_algorithm();
-    void Ford_Fulkerson_algorithm();
+    std::chrono::duration<double> Prims_algorithm();
+    std::chrono::duration<double> Kruskal_algorithm();
+    std::chrono::duration<double> Dijikstras_algorithm();
+    std::chrono::duration<double> Bellmana_Forda_algorithm();
+    std::chrono::duration<double> Ford_Fulkerson_algorithm();
 
 private:
     PriorityQueue* create_priority_queue();

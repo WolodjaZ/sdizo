@@ -87,9 +87,15 @@ void PriorityQueue::print() {
     std::cout << std::endl;
 }
 
+// metoda modyfikuje wierzchołek vertex sąsiada change_vertex
 void PriorityQueue::change_neighbours(int vertex, int value, int change_vertex) {
+    // szuakmy krawędzi która ma wartość vertex w endVertex
+    // przechodzimy po tablicy kopca po koleji
     for(int a = 0; a < this->actual_size; a++){
         if((*(this->root+a)).endVertex == vertex){
+            // kiedy znajdujemy krawędź sprawdzamy czy jej waga jest większa od value
+            // jeśli tak to zamieniamy wage na value i startVertex ma change_vertex
+            // i kończymy
             if((*(this->root+a)).weight > value){
                 (*(this->root+a)).weight = value;
                 (*(this->root+a)).startVertex = change_vertex;

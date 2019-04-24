@@ -7,8 +7,10 @@
 
 #include "Edge.h"
 #include <iostream>
-#include <chrono>
 
+
+// Działanie PriorityQueue opiera się na kopcu gdzie na szczczycie jest minimalna liczba
+// kopiec działa na obiektach klasy Edge gdzie wartość bierze ze zmiennej weigth
 class PriorityQueue {
 private:
     Edge* root;
@@ -24,6 +26,7 @@ public:
     void pop();
     bool is_Empty();
 
+    // jedyna metoda objaśniona w cpp jako iż poprzednie metody były objaśnione w poprzednim projekcie
     void change_neighbours(int vertex, int value, int change_vertex);
 
     void print();

@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.cpp">
+			<Option target="part_2"/>
+		</Unit>
+		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.h">
+			<Option target="part_2"/>
+		</Unit>
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.cpp">
 			<Option target="part_2"/>
 		</Unit>
@@ -130,12 +136,6 @@
 			<Option target="part_2"/>
 		</Unit>
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.h">
-			<Option target="part_2"/>
-		</Unit>
-		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.cpp">
-			<Option target="part_2"/>
-		</Unit>
-		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.h">
 			<Option target="part_2"/>
 		</Unit>
 		<Unit filename="/home/vladimir/Desktop/github-file/sdizo_project/part_2/main.cpp">

@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.h
+Edge.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
+List_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
+
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
 
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
@@ -16,6 +22,8 @@ iostream
 iomanip
 -
 ctime
+-
+chrono
 -
 PriorityQueue.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
@@ -41,8 +49,8 @@ Matrix_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.h
 PriorityQueue.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
-Spanning_Tree.h
-/home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.h
+DisjointSets.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.h
 List_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
 Matrix_graph.h
@@ -69,8 +77,6 @@ Edge.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
 iostream
 -
-chrono
--
 
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.h
 Edge.h
@@ -81,12 +87,6 @@ PriorityQueue.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
 iostream
 -
-
-/home/vladimir/Desktop/github-file/sdizo_project/part_2/Spanning_Tree.h
-Edge.h
-/home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
-List_graph.h
-/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
 
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/main.cpp
 iostream
