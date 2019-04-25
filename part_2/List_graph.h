@@ -39,11 +39,11 @@ public:
 
     Node* getNeighboursList(int vertex);
 
-    std::chrono::duration<double> Prims_algorithm();
-    std::chrono::duration<double> Kruskal_algorithm();
-    std::chrono::duration<double> Dijikstras_algorithm();
-    std::chrono::duration<double> Bellmana_Forda_algorithm();
-    std::chrono::duration<double> Ford_Fulkerson_algorithm();
+    void Prims_algorithm();
+    void Kruskal_algorithm();
+    void Dijikstras_algorithm();
+    void Bellmana_Forda_algorithm();
+    void Ford_Fulkerson_algorithm();
 
     void print(Node** list, int size);
 
@@ -53,6 +53,7 @@ private:
     int random_vertex(bool* in_tree);
     void add_node(int startVertex, int endVertrx, int weight);
     bool exist_edge(int start, int end);
+    void delete_list();
 };
 
 

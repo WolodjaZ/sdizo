@@ -35,16 +35,17 @@ public:
     void print(int** matrix, int size);
 
 
-    std::chrono::duration<double> Prims_algorithm();
-    std::chrono::duration<double> Kruskal_algorithm();
-    std::chrono::duration<double> Dijikstras_algorithm();
-    std::chrono::duration<double> Bellmana_Forda_algorithm();
-    std::chrono::duration<double> Ford_Fulkerson_algorithm();
+    void Prims_algorithm();
+    void Kruskal_algorithm();
+    void Dijikstras_algorithm();
+    void Bellmana_Forda_algorithm();
+    void Ford_Fulkerson_algorithm();
 
 private:
     PriorityQueue* create_priority_queue();
     int** create_matrix_from_edges(Edge *edge, int size);
     int random_vertex(bool* in_tree);
+    void delete_matrix();
 };
 
 

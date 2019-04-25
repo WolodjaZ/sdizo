@@ -87,4 +87,17 @@ CMakeFiles/part_2.dir/main.cpp.o: ../Node.h
 CMakeFiles/part_2.dir/main.cpp.o: ../PriorityQueue.h
 CMakeFiles/part_2.dir/main.cpp.o: ../QPG.h
 CMakeFiles/part_2.dir/main.cpp.o: ../main.cpp
+CMakeFiles/part_2.dir/main.cpp.o: ../menu.h
+
+CMakeFiles/part_2.dir/menu.cpp.o: ../DisjointSets.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../Edge.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../List_graph.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../MS.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../MST.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../Matrix_graph.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../Node.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../PriorityQueue.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../QPG.h
+CMakeFiles/part_2.dir/menu.cpp.o: ../menu.cpp
+CMakeFiles/part_2.dir/menu.cpp.o: ../menu.h
 

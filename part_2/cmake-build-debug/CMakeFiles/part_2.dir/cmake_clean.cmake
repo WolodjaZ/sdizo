@@ -9,6 +9,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/part_2.dir/QPG.cpp.o"
   "CMakeFiles/part_2.dir/MS.cpp.o"
   "CMakeFiles/part_2.dir/Node.cpp.o"
+  "CMakeFiles/part_2.dir/menu.cpp.o"
   "part_2.pdb"
   "part_2"
 )

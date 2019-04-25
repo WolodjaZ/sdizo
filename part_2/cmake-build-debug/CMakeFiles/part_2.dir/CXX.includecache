@@ -6,6 +6,10 @@
 
 #IncludeRegexTransform: 
 
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.cpp
+DisjointSets.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.h
+
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.h
 Edge.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
@@ -13,6 +17,10 @@ List_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
 
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
+
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.cpp
+List_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
 
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
 fstream
@@ -36,6 +44,10 @@ QPG.h
 MS.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.h
 
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.cpp
+MS.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.h
+
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/MS.h
 iostream
 -
@@ -46,6 +58,10 @@ List_graph.h
 Matrix_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h
 
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.cpp
+MST.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.h
+
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/MST.h
 PriorityQueue.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.h
@@ -53,6 +69,12 @@ DisjointSets.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/DisjointSets.h
 List_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
+Matrix_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h
+
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.cpp
+iomanip
+-
 Matrix_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h
 
@@ -78,6 +100,10 @@ Edge.h
 iostream
 -
 
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.cpp
+QPG.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.h
+
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.h
 Edge.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Edge.h
@@ -91,8 +117,20 @@ iostream
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/main.cpp
 iostream
 -
-List_graph.h
-/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
 Matrix_graph.h
 /home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h
+menu.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/menu.h
+
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/menu.cpp
+menu.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/menu.h
+
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/menu.h
+iostream
+-
+Matrix_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/Matrix_graph.h
+List_graph.h
+/home/vladimir/Desktop/github-file/sdizo_project/part_2/List_graph.h
 

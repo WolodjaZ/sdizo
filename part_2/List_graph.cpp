@@ -10,18 +10,7 @@ List_graph::List_graph(): list_table(nullptr), vertex(0), edges(0){}
 
 // Destruktor który usuwa liste sąsiadów
 List_graph::~List_graph() {
-    Node* element, *replace;
-    for(int a = 0; a < this->vertex; a++){
-        // usuwamy po kolejki idąc po wierchołkach sąsiadów danego wierchołka
-        element = list_table[a];
-        while (element != nullptr){
-            replace = element;
-            //std::cout << replace->weight << replace->vetrex << std::endl;
-            element = element->next_element; // coś tu nie tak
-            delete replace;
-        }
-    }
-    delete[] list_table;
+    delete_list();
 }
 
 // metoda która zczytuje dane z pliku poprzez podanie scieżki oraz typu problemu który będzie rozwiązywany
@@ -32,6 +21,7 @@ void List_graph::readFromFile(std::string path, int algorithm) {
     // otwieramy plik o podanej scieżce
     if(file.good()){
 
+        delete_list();
         // Dla odpowiedniego typu algorytmu ustawiamy czy list jest nieskierowana oraz końce i początki grafu
         // 0 - algorytmy MST, 1 - algorytmy najkrutszej scieżki, 2 - algorytm max przepływu
         if(algorithm == 0){
@@ -96,6 +86,8 @@ PriorityQueue* List_graph::create_priority_queue() {
 
 // otrymaną tablice krawędzi zamieniamy na listę sąsiadów do odczytu. Wielkość tablicy wynosi ilość wierchołków - 1
 Node** List_graph::create_list_from_edges(Edge *edge, int size) {
+    delete_list();
+
     Node** list = new Node* [vertex];
     // tworzymy pustą list
     for(int a = 0; a < size; a++) list[a] = nullptr;
@@ -117,6 +109,7 @@ Node** List_graph::create_list_from_edges(Edge *edge, int size) {
 
 // metoda tworząca graf losowy poprzez podanie liczby wierchołków, procentowej gęstości wierchołka, typu algorytmu, oraz przedziałów wielkości krawędzi
 void List_graph::generator(int vertex, int density_procent, int type, int max, int min) {
+
     this->list_table = new Node* [vertex];
     this->vertex = vertex;
     // wyliczamy liczbę krawędzi
@@ -145,10 +138,10 @@ void List_graph::generator(int vertex, int density_procent, int type, int max, i
         // wybieramy randomowy wierzchołek nie znajdujący się jeszcze w drzewie
         second = random_vertex(in_tree);
         edge = (std::rand()%max)+min;
-        srand(time(NULL));
+        //srand(time(NULL));
         // i tworzymy element sąsiada o danych ktróre otrzymaliśmy
         add_node(first, second, edge);
-        srand(time(NULL));
+        //srand(time(NULL));
         // jeśli jest graf nieskierowany to dodajemy przeciwnego sąsiada
         if(!directed) add_node(second, first, edge);
         a++;
@@ -166,9 +159,9 @@ void List_graph::generator(int vertex, int density_procent, int type, int max, i
     while(a < edges){
         first = std::rand()%vertex;
         second = std::rand()%vertex;
-        srand(time(NULL));
+        //srand(time(NULL));
         edge = (std::rand()%max)+min;
-        srand(time(NULL));
+        //srand(time(NULL));
         // wiechołki nie mogą być takie same oraz nie możę istnie taka już krawędź
         if(first != second && !exist_edge(first,second)){
             add_node(first, second, edge);
@@ -199,8 +192,6 @@ bool List_graph::exist_edge(int start, int end) {
 void List_graph::add_node(int startVertex, int endVertrx, int weight) {
     Node* node = new Node(list_table[startVertex], endVertrx, weight);
     list_table[startVertex] = node;
-    /*node->next_element = list_table[startVertex];
-    list_table[startVertex] = node;*/
 }
 
 // wybiera wierzhołek który nie jest w drzewie
@@ -213,54 +204,58 @@ int List_graph::random_vertex(bool *in_tree) {
 }
 
 // metoda obsługująca algorytm kruskala
-std::chrono::duration<double> List_graph::Kruskal_algorithm() {
-    //if(vertex == 0)return;
+void List_graph::Kruskal_algorithm() {
+    if(vertex == 0)return;
     // tworzymy kolejkę priorytetową z listy sąsiadóœ
-    auto start1 = std::chrono::system_clock::now();
     PriorityQueue* priorityQueue = create_priority_queue();
     Edge* edge = MST::kruskal_algorithm(priorityQueue, vertex);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
     // otrzymaną tablice krawędzi zamieniamy na listę sąsiadów
-    //Node** list = create_list_from_edges(edge, vertex);
+    Node** list = create_list_from_edges(edge, vertex);
     delete[] edge;
     // odczytujemy list sąsiadów
-    //print(list, vertex);
-    //for(int a = 0; a < this->vertex; a++) delete list[a];
-    //delete[] list;
+    print(list, vertex);
+    for(int a = 0; a < this->vertex; a++){
+        Node* element = list[a];
+        while (element != nullptr){
+            Node* replace = element;
+            //std::cout << replace->weight << replace->vetrex << replace->next_element << std::endl;
+            element = element->next_element;
+            delete replace;
+        }
+    }
+    delete[] list;
 
 }
 
 // metoda obsługująca algorytm Prima
-std::chrono::duration<double> List_graph::Prims_algorithm() {
-    //if(vertex == 0)return;
-    auto start1 = std::chrono::system_clock::now();
+void List_graph::Prims_algorithm() {
+    if(vertex == 0)return;
     Edge* edge = MST::prim_algorithm(nullptr, list_table, vertex, edges);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
     // otrzymaną tablice krawędzi zamieniamy na listę sąsiadów
     Node** list = create_list_from_edges(edge, vertex);
     delete[] edge;
-    //print(list, vertex);
-    //for(int a = 0; a < this->vertex; a++) delete list[a];
-    //delete[] list;
+    print(list, vertex);
+    for(int a = 0; a < this->vertex; a++) {
+        Node* element = list[a];
+        while (element != nullptr){
+            Node* replace = element;
+            //std::cout << replace->weight << replace->vetrex << replace->next_element << std::endl;
+            element = element->next_element;
+            delete replace;
+        }
+    }
+    delete[] list;
 }
 
 // metoda obsługująca algorytm Dijikstry
-std::chrono::duration<double> List_graph::Dijikstras_algorithm() {
-    //if(vertex == 0)return;
+void List_graph::Dijikstras_algorithm() {
+    if(vertex == 0)return;
     // wstępnie wypisujemy jaki jest startowy wierchołek
-    //std::cout << "Start vertex: " << start << std::endl;
-    auto start1 = std::chrono::system_clock::now();
+    std::cout << "Start vertex: " << start << std::endl;
     Edge* vertexs = QPG::Djikstry_algorithm(nullptr, list_table,vertex, start);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
-    //if (vertexs == nullptr) return;
+    if (vertexs == nullptr) return;
     // wypisujemy wszsytkie przejscia
-    /*for(int a = 0; a < vertex; a++){
+    for(int a = 0; a < vertex; a++){
         Edge edge = vertexs[a];
         // bierzemy po kolei krawędzie wypsiujemy jaka krawędz waga i przez jakie krawędzie przechodzi
         std::cout << "Vertex:" << a << " cost: " << edge.weight <<" road: " << edge.endVertex;
@@ -269,24 +264,20 @@ std::chrono::duration<double> List_graph::Dijikstras_algorithm() {
             std::cout << " " << edge.startVertex;
             edge = vertexs[edge.startVertex];
         }
-        std::cout << std::endl;*/
-    //}
+        std::cout << std::endl;
+    }
 
     delete[] vertexs;
 }
 
 // metoda obsługująca algorytm Bellmana-Forda
-std::chrono::duration<double> List_graph::Bellmana_Forda_algorithm() {
-    //if(vertex == 0)return;
-    //std::cout << "Start vertex: " << start << std::endl;
-    auto start1 = std::chrono::system_clock::now();
+void List_graph::Bellmana_Forda_algorithm() {
+    if(vertex == 0)return;
+    std::cout << "Start vertex: " << start << std::endl;
     Edge* vertexs = QPG::Forda_Belmana_algorithm(nullptr, list_table,vertex, start);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
     // Podobnie jak w algo Dijikstry są wypisywane przejscia
-    //if (vertexs == nullptr) return;
-    /*for(int a = 0; a < vertex; a++){
+    if (vertexs == nullptr) return;
+    for(int a = 0; a < vertex; a++){
         Edge edge = vertexs[a];
         std::cout << "Vertex:" << a << " cost: " << edge.weight <<" road: " << edge.endVertex;
         while(edge.startVertex != -1){
@@ -294,7 +285,7 @@ std::chrono::duration<double> List_graph::Bellmana_Forda_algorithm() {
             edge = vertexs[edge.startVertex];
         }
         std::cout << std::endl;
-    }*/
+    }
     delete[] vertexs;
 }
 
@@ -337,4 +328,21 @@ void List_graph::print(Node** list, int size) {
 
     // wypsiujemy sumaryczną wagę wszystkich krawędzi w liscie
     std::cout << "Sumaryczna waga: " << sum << std::endl;
+}
+
+void List_graph::delete_list() {
+    if(list_table == nullptr)return;
+
+    Node* element, *replace;
+    for(int a = 0; a < this->vertex; a++){
+        // usuwamy po kolejki idąc po wierchołkach sąsiadów danego wierchołka
+        element = list_table[a];
+        while (element != nullptr){
+            replace = element;
+            //std::cout << replace->weight << replace->vetrex << replace->next_element << std::endl;
+            element = element->next_element; // coś tu nie tak
+            delete replace;
+        }
+    }
+    delete[] list_table;
 }

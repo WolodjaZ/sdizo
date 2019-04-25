@@ -12,12 +12,12 @@ Matrix_graph::Matrix_graph(): table_matrix(nullptr), vertex(0), edges(0) {
 
 // Destruktor który usuwa macierz
 Matrix_graph::~Matrix_graph() {
-    for (int a = 0; a < this->vertex; a++) delete table_matrix[a];
-    delete[] table_matrix;
+    delete_matrix();
 }
 
 // metoda tworząca graf losowy poprzez podanie liczby wierchołków, procentowej gęstości wierchołka, typu algorytmu, oraz przedziałów wielkości krawędzi
 void Matrix_graph::generator(int vertex, int density_procent, int type, int max, int min) {
+    delete_matrix();
     this->table_matrix = new int* [vertex];
     this->vertex = vertex;
     // wyliczamy liczbę krawędzi
@@ -49,10 +49,10 @@ void Matrix_graph::generator(int vertex, int density_procent, int type, int max,
         // wybieramy randomowy wierzchołek nie znajdujący się jeszcze w drzewie
         second = random_vertex(in_tree);
         edge = (std::rand()%max)+min;
-        srand(time(NULL));
+        //srand(time(NULL));
         // i tworzymy element sąsiada o danych ktróre otrzymaliśmy
         table_matrix[first][second] = edge;
-        srand(time(NULL));
+        //srand(time(NULL));
         // jeśli jest graf nieskierowany to dodajemy przeciwnego sąsiada
         if(!directed) table_matrix[second][first] = edge;
         a++;
@@ -70,9 +70,9 @@ void Matrix_graph::generator(int vertex, int density_procent, int type, int max,
     while(a < edges){
         first = std::rand()%vertex;
         second = std::rand()%vertex;
-        srand(time(NULL));
+        //srand(time(NULL));
         edge = (std::rand()%max)+min;
-        srand(time(NULL));
+        //srand(time(NULL));
         // wiechołki nie mogą być takie same oraz nie możę istnie taka już krawędź
         if(first != second && 0 == table_matrix[first][second]){
             table_matrix[first][second] = edge;
@@ -104,6 +104,7 @@ void Matrix_graph::readFromFile(std::string path, int algorithm) {
     // otwieramy plik o podanej scieżce
     if (file.good())
     {
+        delete_matrix();
         // Dla odpowiedniego typu algorytmu ustawiamy czy macierz jest nieskierowana oraz końce i początki grafu
         // 0 - algorytmy MST, 1 - algorytmy najkrutszej scieżki, 2 - algorytm max przepływu
         if(algorithm == 0){
@@ -182,45 +183,33 @@ int** Matrix_graph::create_matrix_from_edges(Edge* edge, int size) {
 }
 
 
-std::chrono::duration<double> Matrix_graph::Kruskal_algorithm() {
-    //if(vertex == 0)return;
-    auto start1 = std::chrono::system_clock::now();
+void Matrix_graph::Kruskal_algorithm() {
+    if(vertex == 0)return;
     PriorityQueue* priorityQueue = create_priority_queue();
     Edge *edge = MST::kruskal_algorithm(priorityQueue, this->vertex);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
-    //int** matrix = create_matrix_from_edges(edge, vertex);
+    int** matrix = create_matrix_from_edges(edge, vertex);
     delete[] edge;
-    //print(matrix, vertex);
-    //for(int i = 0; i < vertex; i++) delete[] matrix[i];
-    //delete[] matrix;
+    print(matrix, vertex);
+    for(int i = 0; i < vertex; i++) delete[] matrix[i];
+    delete[] matrix;
 }
 
-std::chrono::duration<double> Matrix_graph::Prims_algorithm() {
-    //if(vertex == 0)return;
-    auto start1 = std::chrono::system_clock::now();
+void Matrix_graph::Prims_algorithm() {
+    if(vertex == 0)return;
     Edge* edge = MST::prim_algorithm(table_matrix, nullptr, vertex, edges);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
-    //int** matrix = create_matrix_from_edges(edge, vertex);
+    int** matrix = create_matrix_from_edges(edge, vertex);
     delete[] edge;
-    //print(matrix, vertex);
-    //for(int i = 0; i < vertex; i++) delete matrix[i];
-    //delete[] matrix;
+    print(matrix, vertex);
+    for(int i = 0; i < vertex; i++) delete matrix[i];
+    delete[] matrix;
 }
 
-std::chrono::duration<double> Matrix_graph::Dijikstras_algorithm() {
-    //if(vertex == 0)return;
-    //std::cout << "Start vertex: " << start << std::endl;
-    auto start1 = std::chrono::system_clock::now();
+void Matrix_graph::Dijikstras_algorithm() {
+    if(vertex == 0)return;
+    std::cout << "Start vertex: " << start << std::endl;
     Edge* vertexs = QPG::Djikstry_algorithm(table_matrix, nullptr, vertex, start);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
-    //if (vertexs == nullptr) return;
-    /*for(int a = 0; a < vertex; a++){
+    if (vertexs == nullptr) return;
+    for(int a = 0; a < vertex; a++){
         Edge edge = vertexs[a];
         std::cout << "Vertex:" << a << " cost: " << edge.weight <<" road: " << edge.endVertex;
         while(edge.startVertex != -1){
@@ -228,21 +217,17 @@ std::chrono::duration<double> Matrix_graph::Dijikstras_algorithm() {
             edge = vertexs[edge.startVertex];
         }
         std::cout <<  std::endl;
-    }*/
+    }
 
     delete[] vertexs;
 }
 
-std::chrono::duration<double> Matrix_graph::Bellmana_Forda_algorithm() {
-    //if(vertex == 0)return;
-    //std::cout << "Start vertex: " << start << std::endl;
-    auto start1 = std::chrono::system_clock::now();
+void Matrix_graph::Bellmana_Forda_algorithm() {
+    if(vertex == 0)return;
+    std::cout << "Start vertex: " << start << std::endl;
     Edge* vertexs = QPG::Forda_Belmana_algorithm(table_matrix, nullptr, vertex, start);
-    auto end1 = std::chrono::system_clock::now();
-    std::chrono::duration<double> elapsed_seconds = end1-start1;
-    return elapsed_seconds;
-    //if (vertexs == nullptr) return;
-    /*for(int a = 0; a < vertex; a++){
+    if (vertexs == nullptr) return;
+    for(int a = 0; a < vertex; a++){
         Edge edge = vertexs[a];
         std::cout << "Vertex:" << a << " cost: " << edge.weight <<" road: " << edge.endVertex;
         while(edge.startVertex != -1){
@@ -250,7 +235,7 @@ std::chrono::duration<double> Matrix_graph::Bellmana_Forda_algorithm() {
             edge = vertexs[edge.startVertex];
         }
         std::cout << std::endl;
-    }*/
+    }
 
     delete[] vertexs;
 }
@@ -279,13 +264,13 @@ void Matrix_graph::print(int** matrix, int size) {
         std::cout << "Start vertex: " << a << " :";
         for(int b = 0; b < size; b++){
             // podajemy krawędz końcową i wagę i przechodzimy dalej
-            if(matrix == table_matrix){
+            if(matrix != table_matrix){
                 if(matrix[a][b] != 0){
                     // dla algorymtów drzewa nie trzeba wypisywać całą macierz tylko te miejsca gdzie są wartości
-                    std::cout <<  b  << matrix[a][b] << ", ";
+                    std::cout << " vertex:" << b << " weight:" << matrix[a][b] << ", ";
                 }
             }else{
-                std::cout << " vertex:" << b << "weight:" << matrix[a][b] << ", ";
+                std::cout << " vertex:" << b << " weight:" << matrix[a][b] << ", ";
             }
             sum += matrix[a][b];
         }
@@ -293,4 +278,9 @@ void Matrix_graph::print(int** matrix, int size) {
     }
     // podajemy sumaryczną wagę listy
     std::cout << "Sumaryczna waga: " << sum << std::endl;
+}
+
+void Matrix_graph::delete_matrix() {
+    for (int a = 0; a < this->vertex; a++) delete table_matrix[a];
+    delete[] table_matrix;
 }

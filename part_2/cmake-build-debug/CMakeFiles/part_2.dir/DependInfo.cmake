@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/PriorityQueue.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/PriorityQueue.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/QPG.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/QPG.cpp.o"
   "/home/vladimir/Desktop/github-file/sdizo_project/part_2/main.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/main.cpp.o"
+  "/home/vladimir/Desktop/github-file/sdizo_project/part_2/menu.cpp" "/home/vladimir/Desktop/github-file/sdizo_project/part_2/cmake-build-debug/CMakeFiles/part_2.dir/menu.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
