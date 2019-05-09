@@ -12,31 +12,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cea1e3ff-367a-4532-867a-2f00696d3264" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../part_2/BinaryHeap.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/BinaryHeap.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/Edge.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/Edge.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/List_graph.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/List_graph.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/Matrix_graph.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/Matrix_graph.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/PriorityQueue.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/PriorityQueue.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/Spanning_Tree.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../part_2/Spanning_Tree.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_binary_heap.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/My_binary_heap.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/My_red_black_tree2.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/My_red_black_tree2.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/part_1.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/part_1.dir/CXX.includecache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/part_1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/part_1.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/part_1.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/part_1.dir/flags.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/part_1" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/part_1" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../part_2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../part_2/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/Eratosthenes_sieve.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/Eratosthenes_sieve.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/Eratosthenes_sieve.h" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/Eratosthenes_sieve.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/List.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/List.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../untitled/List.h" beforeDir="false" afterPath="$PROJECT_DIR$/../untitled/List.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -75,11 +66,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/My_list2.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="804">
-              <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-              <folding>
-                <element signature="e#96#114#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="162">
+              <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -87,8 +75,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/My_binary_heap.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="732">
-              <caret line="214" column="1" lean-forward="true" selection-start-line="7" selection-end-line="214" selection-end-column="1" />
+            <state relative-caret-position="18">
+              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
               <folding>
                 <element signature="e#43#61#0" expanded="true" />
               </folding>
@@ -225,9 +213,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1920" />
-    <option name="width" value="1920" />
-    <option name="height" value="1020" />
+    <option name="x" value="240" />
+    <option name="y" value="127" />
+    <option name="width" value="1440" />
+    <option name="height" value="766" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -300,17 +289,19 @@
       <workItem from="1553607889768" duration="1297000" />
       <workItem from="1554463371991" duration="121000" />
       <workItem from="1555013908561" duration="88000" />
+      <workItem from="1555271837962" duration="27000" />
+      <workItem from="1556212669271" duration="81000" />
+      <workItem from="1556227537590" duration="46000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114412000" />
+    <option name="totallyTimeSpent" value="114566000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1920" y="0" width="1920" height="1020" extended-state="6" />
-    <editor active="true" />
+    <frame x="0" y="0" width="1920" height="1200" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12447917" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12447917" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -440,6 +431,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/My_binary_heap.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
+          <folding>
+            <element signature="e#108#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/My_array2.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="756">
@@ -454,6 +455,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3726">
           <caret line="207" column="13" selection-start-line="207" selection-start-column="13" selection-end-line="207" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/My_list2.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -491,30 +499,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/My_binary_heap.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" lean-forward="true" selection-start-line="25" selection-end-line="25" />
-          <folding>
-            <element signature="e#108#126#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/My_list2.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="804">
-          <caret line="55" column="26" selection-start-line="55" selection-start-column="26" selection-end-line="55" selection-end-column="26" />
-          <folding>
-            <element signature="e#96#114#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/My_binary_heap.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="732">
-          <caret line="214" column="1" lean-forward="true" selection-start-line="7" selection-end-line="214" selection-end-column="1" />
+        <state relative-caret-position="18">
+          <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
           <folding>
             <element signature="e#43#61#0" expanded="true" />
           </folding>
