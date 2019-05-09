@@ -14,7 +14,7 @@ public:
 
     Node(Node *nextElement, int vetrex, int weight);
 
-    virtual ~Node();
+    //virtual ~Node();
 };
 
 

@@ -17,7 +17,7 @@ Matrix_graph::~Matrix_graph() {
 
 // metoda tworząca graf losowy poprzez podanie liczby wierchołków, procentowej gęstości wierchołka, typu algorytmu, oraz przedziałów wielkości krawędzi
 void Matrix_graph::generator(int vertex, int density_procent, int type, int max, int min) {
-    delete_matrix();
+    if(table_matrix != nullptr)delete_matrix();
     this->table_matrix = new int* [vertex];
     this->vertex = vertex;
     // wyliczamy liczbę krawędzi
@@ -104,7 +104,7 @@ void Matrix_graph::readFromFile(std::string path, int algorithm) {
     // otwieramy plik o podanej scieżce
     if (file.good())
     {
-        delete_matrix();
+        if(table_matrix != nullptr)delete_matrix();
         // Dla odpowiedniego typu algorytmu ustawiamy czy macierz jest nieskierowana oraz końce i początki grafu
         // 0 - algorytmy MST, 1 - algorytmy najkrutszej scieżki, 2 - algorytm max przepływu
         if(algorithm == 0){
@@ -177,6 +177,8 @@ int** Matrix_graph::create_matrix_from_edges(Edge* edge, int size) {
     for(int i = 0; i < size-1; i++){
         matrix[edge[i].startVertex][edge[i].endVertex] = edge[i].weight;
         if(!directed) matrix[edge[i].endVertex][edge[i].startVertex] = edge[i].weight;
+        //std::cout << matrix[edge[i].startVertex][edge[i].endVertex] << " " <<edge[i].startVertex << " "  << edge[i].endVertex << std::endl;
+        //if(!directed) matrix[edge[i].endVertex][edge[i].startVertex] = edge[i].weight;
     }
 
     return matrix;
@@ -267,10 +269,10 @@ void Matrix_graph::print(int** matrix, int size) {
             if(matrix != table_matrix){
                 if(matrix[a][b] != 0){
                     // dla algorymtów drzewa nie trzeba wypisywać całą macierz tylko te miejsca gdzie są wartości
-                    std::cout << " vertex:" << b << " weight:" << matrix[a][b] << ", ";
+                    std::cout << " (" << b << " " << matrix[a][b] << "), ";
                 }
             }else{
-                std::cout << " vertex:" << b << " weight:" << matrix[a][b] << ", ";
+                std::cout << " (" << b << " " << matrix[a][b] << "), ";
             }
             sum += matrix[a][b];
         }
@@ -283,4 +285,5 @@ void Matrix_graph::print(int** matrix, int size) {
 void Matrix_graph::delete_matrix() {
     for (int a = 0; a < this->vertex; a++) delete table_matrix[a];
     delete[] table_matrix;
+    table_matrix = nullptr;
 }

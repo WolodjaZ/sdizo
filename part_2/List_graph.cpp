@@ -21,7 +21,7 @@ void List_graph::readFromFile(std::string path, int algorithm) {
     // otwieramy plik o podanej scieżce
     if(file.good()){
 
-        delete_list();
+        if(list_table != nullptr) delete_list();
         // Dla odpowiedniego typu algorytmu ustawiamy czy list jest nieskierowana oraz końce i początki grafu
         // 0 - algorytmy MST, 1 - algorytmy najkrutszej scieżki, 2 - algorytm max przepływu
         if(algorithm == 0){
@@ -39,6 +39,7 @@ void List_graph::readFromFile(std::string path, int algorithm) {
         }
 
         list_table = new Node* [this->vertex];
+        for(int a = 0; a < vertex; a++) list_table[a] = nullptr;
 
         int startVertex, endVertrx, weight;
 
@@ -75,7 +76,8 @@ PriorityQueue* List_graph::create_priority_queue() {
         // początkowego to tworzy się obiekt krawędzi o odpowiednich danych i dodaje się do kolejki
         // warunek wielkości wiechołka początkowego służy do nie dodawania tych samych krawędzi jako że jest to graf nieskierowany
         while(element != nullptr){
-            if(element->vetrex > i) priorityQueue->push(Edge(i,element->vetrex, element->weight));
+            if(element->vetrex > i)
+                priorityQueue->push(Edge(i,element->vetrex, element->weight));
 
             element = element->next_element;
         }
@@ -86,8 +88,6 @@ PriorityQueue* List_graph::create_priority_queue() {
 
 // otrymaną tablice krawędzi zamieniamy na listę sąsiadów do odczytu. Wielkość tablicy wynosi ilość wierchołków - 1
 Node** List_graph::create_list_from_edges(Edge *edge, int size) {
-    delete_list();
-
     Node** list = new Node* [vertex];
     // tworzymy pustą list
     for(int a = 0; a < size; a++) list[a] = nullptr;
@@ -109,7 +109,7 @@ Node** List_graph::create_list_from_edges(Edge *edge, int size) {
 
 // metoda tworząca graf losowy poprzez podanie liczby wierchołków, procentowej gęstości wierchołka, typu algorytmu, oraz przedziałów wielkości krawędzi
 void List_graph::generator(int vertex, int density_procent, int type, int max, int min) {
-
+    if(list_table != nullptr) delete_list();
     this->list_table = new Node* [vertex];
     this->vertex = vertex;
     // wyliczamy liczbę krawędzi
@@ -218,7 +218,6 @@ void List_graph::Kruskal_algorithm() {
         Node* element = list[a];
         while (element != nullptr){
             Node* replace = element;
-            //std::cout << replace->weight << replace->vetrex << replace->next_element << std::endl;
             element = element->next_element;
             delete replace;
         }
@@ -339,10 +338,11 @@ void List_graph::delete_list() {
         element = list_table[a];
         while (element != nullptr){
             replace = element;
-            //std::cout << replace->weight << replace->vetrex << replace->next_element << std::endl;
+            //std::cout << replace->weight << " " << replace->vetrex << std::endl;//replace->next_element << std::endl;
             element = element->next_element; // coś tu nie tak
             delete replace;
         }
     }
     delete[] list_table;
+    list_table = nullptr;
 }

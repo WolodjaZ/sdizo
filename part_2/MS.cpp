@@ -50,7 +50,7 @@ int MS::Ford_Fulkerson_algorithm() {
             max_flow += path_flow;
         }
 
-        for(int a = 0; a < size; a++) delete rGraph[a];
+        for(int a = 0; a < size; a++) {delete rGraph[a];}
         delete [] rGraph;
 
     } else if(list != nullptr){

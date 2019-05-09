@@ -119,13 +119,21 @@ Edge* QPG::Forda_Belmana_algorithm(int **matrix, Node **list, int vertex, int st
         if(list != nullptr){
             Node* element = list[a];
             while (element != nullptr){
-                if(expenses[element->vetrex] > expenses[a] + element->weight) return nullptr;
+                if(expenses[element->vetrex] > expenses[a] + element->weight){
+                    delete[] expenses;
+                    delete[] prev;
+                    return nullptr;
+                }
                 element = element->next_element;
             }
         } else if(matrix != nullptr){
             for(int b = 0; b < vertex; b++){
                 if(matrix[a][b] == 0) continue;
-                if(expenses[b] > expenses[a] + matrix[a][b]) return nullptr;
+                if(expenses[b] > expenses[a] + matrix[a][b]) {
+                    delete[] expenses;
+                    delete[] prev;
+                    return nullptr;
+                }
             }
         }
         // tworzymy wierzchołek a o jego wartościach poprzednika i kosztu i dodajemy do tablicy wierzchołków

@@ -13,7 +13,7 @@ int main() {
 
 
     //List_graph l;
-    //l.readFromFile("/home/vladimir/Desktop/github-file/sdizo_project/part_2/text.txt", 2);
+    //l.readFromFile("/home/vladimir/Desktop/github-file/sdizo_project/part_2/text.txt", 0);
     //l.generator(12, 50, 0, 10, 1);
     //l.print(nullptr, 0);
     //l.Kruskal_algorithm();
