@@ -41,7 +41,7 @@ Edge* MST::kruskal_algorithm(PriorityQueue* priorityQueue, int vetrex) {
 // metoda tworzenia minimalnego drzewa rozpinającego algorytmem prima
 Edge* MST::prim_algorithm(int** matrix, Node** list, int vertex, int edges) {
     // inicjalizujemy kolejke priorytetową o wielkości ilości krawędzi
-    PriorityQueue priorityQueu(edges);
+    PriorityQueue *priorityQueu = new PriorityQueue(edges);
     // tablica krawędzi które będą opisywały drzewo
     Edge* edges_array = new Edge[vertex-1];
     // tablica informacji które wiechołki drzewo zawiera
@@ -62,7 +62,7 @@ Edge* MST::prim_algorithm(int** matrix, Node** list, int vertex, int edges) {
             for(int a = 0; a < vertex; a++){
                 if(matrix[v][a] != 0 && !visited[a]){
                     Edge edge(v, a, matrix[v][a]);
-                    priorityQueu.push(edge);
+                    priorityQueu->push(edge);
                 }
             }
         } else if(list != nullptr){
@@ -70,19 +70,23 @@ Edge* MST::prim_algorithm(int** matrix, Node** list, int vertex, int edges) {
             while (element != nullptr){
                 if(!visited[element->vetrex]){
                     Edge edge(v, element->vetrex, element->weight);
-                    priorityQueu.push(edge);
+                    priorityQueu->push(edge);
                 }
                 element = element->next_element;
             }
-        }  else return nullptr;
+        }  else {
+            delete priorityQueu;
+            delete[] visited;
+            return nullptr;
+        }
 
         Edge edge;
 
         do{
             // pobieramy krawędź o najmniejszej wartości weight dopóki wiechołek końcowy
             // krawędzi nie będzie znajdował się w drzewie
-            edge = priorityQueu.first();
-            priorityQueu.pop();
+            edge = priorityQueu->first();
+            priorityQueu->pop();
         }while (visited[edge.endVertex]);
         // dodajemy otrzymaną krawędzi do tablicy krawędzi drzewa
         edges_array[i-1] = edge;
@@ -93,6 +97,7 @@ Edge* MST::prim_algorithm(int** matrix, Node** list, int vertex, int edges) {
     }
 
 
+    delete priorityQueu;
     delete[] visited;
     return edges_array;
 }
