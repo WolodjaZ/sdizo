@@ -210,19 +210,14 @@ void List_graph::Kruskal_algorithm() {
     PriorityQueue* priorityQueue = create_priority_queue();
     Edge* edge = MST::kruskal_algorithm(priorityQueue, vertex);
     // otrzymaną tablice krawędzi zamieniamy na listę sąsiadów
-    Node** list = create_list_from_edges(edge, vertex);
-    delete[] edge;
-    // odczytujemy list sąsiadów
-    print(list, vertex);
-    for(int a = 0; a < this->vertex; a++){
-        Node* element = list[a];
-        while (element != nullptr){
-            Node* replace = element;
-            element = element->next_element;
-            delete replace;
-        }
+    std::cout << "Edge: Weight" << std::endl;
+    int wynik = 0;
+    for(int a = 0; a < vertex-1; a++){
+        std::cout << "(" << edge[a].startVertex << " " << edge[a].endVertex << "): " << edge[a].weight <<std::endl;
+        wynik += edge[a].weight;
     }
-    delete[] list;
+    std::cout << "Sum: " << wynik << std::endl;
+    delete[] edge;
 
 }
 
@@ -231,19 +226,14 @@ void List_graph::Prims_algorithm() {
     if(vertex == 0)return;
     Edge* edge = MST::prim_algorithm(nullptr, list_table, vertex, edges);
     // otrzymaną tablice krawędzi zamieniamy na listę sąsiadów
-    Node** list = create_list_from_edges(edge, vertex);
-    delete[] edge;
-    print(list, vertex);
-    for(int a = 0; a < this->vertex; a++) {
-        Node* element = list[a];
-        while (element != nullptr){
-            Node* replace = element;
-            //std::cout << replace->weight << replace->vetrex << replace->next_element << std::endl;
-            element = element->next_element;
-            delete replace;
-        }
+    std::cout << "Edge: Weight" << std::endl;
+    int wynik = 0;
+    for(int a = 0; a < vertex-1; a++){
+        std::cout << "(" << edge[a].startVertex << " " << edge[a].endVertex << "): " << edge[a].weight <<std::endl;
+        wynik += edge[a].weight;
     }
-    delete[] list;
+    std::cout << "Sum: " << wynik << std::endl;
+    delete[] edge;
 }
 
 // metoda obsługująca algorytm Dijikstry
@@ -324,7 +314,7 @@ void List_graph::print(Node** list, int size) {
         }
         std::cout << std::endl;
     }
-
+    if(!directed) sum = sum/2;
     // wypsiujemy sumaryczną wagę wszystkich krawędzi w liscie
     std::cout << "Sumaryczna waga: " << sum << std::endl;
 }

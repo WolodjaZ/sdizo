@@ -189,21 +189,27 @@ void Matrix_graph::Kruskal_algorithm() {
     if(vertex == 0)return;
     PriorityQueue* priorityQueue = create_priority_queue();
     Edge *edge = MST::kruskal_algorithm(priorityQueue, this->vertex);
-    int** matrix = create_matrix_from_edges(edge, vertex);
+    std::cout << "Edge: Weight" << std::endl;
+    int wynik = 0;
+    for(int a = 0; a < vertex-1; a++){
+        std::cout << "(" << edge[a].startVertex << " " << edge[a].endVertex << "): " << edge[a].weight <<std::endl;
+        wynik += edge[a].weight;
+    }
+    std::cout << "Sum: " << wynik << std::endl;
     delete[] edge;
-    print(matrix, vertex);
-    for(int i = 0; i < vertex; i++) delete[] matrix[i];
-    delete[] matrix;
 }
 
 void Matrix_graph::Prims_algorithm() {
     if(vertex == 0)return;
     Edge* edge = MST::prim_algorithm(table_matrix, nullptr, vertex, edges);
-    int** matrix = create_matrix_from_edges(edge, vertex);
+    std::cout << "Edge: Weight" << std::endl;
+    int wynik = 0;
+    for(int a = 0; a < vertex-1; a++){
+        std::cout << "(" << edge[a].startVertex << " " << edge[a].endVertex << "): " << edge[a].weight <<std::endl;
+        wynik += edge[a].weight;
+    }
+    std::cout << "Sum: " << wynik << std::endl;
     delete[] edge;
-    print(matrix, vertex);
-    for(int i = 0; i < vertex; i++) delete matrix[i];
-    delete[] matrix;
 }
 
 void Matrix_graph::Dijikstras_algorithm() {
@@ -262,23 +268,29 @@ void Matrix_graph::print(int** matrix, int size) {
     std::cout << "\nMatrix representation:" << std::endl;
     std::cout << std::endl;
     int sum = 0;
+    std::cout << "   ";
     for(int a = 0; a < size; a++){
-        std::cout << "Start vertex: " << a << " :";
+        std::cout << a << " ";
+    }
+    std::cout << std::endl;
+    for(int a = 0; a < size; a++){
+        std::cout << a << " :";
         for(int b = 0; b < size; b++){
             // podajemy krawędz końcową i wagę i przechodzimy dalej
             if(matrix != table_matrix){
                 if(matrix[a][b] != 0){
                     // dla algorymtów drzewa nie trzeba wypisywać całą macierz tylko te miejsca gdzie są wartości
-                    std::cout << " (" << b << " " << matrix[a][b] << "), ";
+                    std::cout << matrix[a][b] << " ";
                 }
             }else{
-                std::cout << " (" << b << " " << matrix[a][b] << "), ";
+                std::cout << matrix[a][b] << " ";
             }
             sum += matrix[a][b];
         }
         std::cout << std::endl;
     }
     // podajemy sumaryczną wagę listy
+    if(!directed) sum = sum/2;
     std::cout << "Sumaryczna waga: " << sum << std::endl;
 }
 
